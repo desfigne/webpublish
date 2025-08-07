@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>11. 폼</title>
+</head>
+<body>
+    <h1 id="top">폼 태그 (Form Tag) - 추천하는 현재 시멘틱 방식(그룹핑으로 스타일 매핑)</h1>
+    <hr>
+    <br>
+    <h3 id="top">이름, 주소, 전송, 취소 버튼, 화면 생성</h3>
+    <form action="#">
+        <ul>
+            <li> <input type="text" name="name" placeholder="이름을 입력해주세요."> </li>
+            <li> <input type="text" name="address" placeholder="주소를 입력해주세요."> </li>
+            <!--
+            <li> <label for="">이름</label> <input type="text" name="name"> </li>
+            <li> <label for="">주소</label> <input type="text" name="address"> </li>
+            -->
+            <!-- name="홍길동"&address="서울시" 로 넘어감 -->
+            <!-- 타입과 네임은 서버에 전달할때 필수, 아이디(id)는 자바스크립트 사용할때 사용으로 필수 아님 -->
+
+            <li> <button type="submit">전송</button> </li>
+            <li> <button type="reset">취소</button> </li>
+        </ul>
+    </form>
+    <br>
+    <br>
+    <h1 id="top">폼 태그 (Form Tag) - 추천하지 않는 이전 방식</h1>
+    <hr>
+    <br>
+    <h3 id="top">이름, 주소, 전송, 취소 버튼, 화면 생성</h3>
+    <form action="백엔드 서버와 파일 주소">
+        <label for="">이름</label> <input type="text"> <br>
+        <label for="">주소</label> <input type="text"> <br>
+        
+        <input type="button" value="전송">
+        <input type="reset" value="취소">
+    </form>
+    <br>
+    <br>
+    <h1 id="top">폼 태그 (Form Tag) - 추천하지 않는 예전 방식(각각의 스타일을 매핑할 수가 없음)</h1>
+    <hr>
+    <br>
+    <h3 id="top">이름, 주소, 전송, 취소 버튼, 화면 생성</h3>
+    <form action="백엔드 서버와 파일 주소">
+        이름 : <input type="text"> <br>
+        주소 : <input type="text"> <br>
+        
+        <input type="button" value="전송">
+        <input type="reset" value="취소">
+    </form>
+</body>
+</html>

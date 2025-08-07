@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <title>09. 앵커 태그</title>
+</head>
+<body>
+    <h1>앵커 태그(Anchor Tag)</h1>
+    <hr>
+    <br>
+    <h3>클릭시 링크 이동 (절대 경로)</h3>
+    <a href="https://www.naver.com" target="_self">네이버(Naver) - 자신 창</a>
+    <!-- 디폴트 값은 셀프로 자신 창에서 경로로 이동 -->
+
+    <a href="https://www.naver.com" target="_blank">네이버(Naver) - 새 창</a>
+    <!-- 자신 창이 아닌 새 창에서 경로로 이동 -->
+
+    <a href="https://www.google.com">구글(Google)</a>
+    <a href="http://127.0.0.1:5500/HTML+CSS/08_table.html">테이블 사용법</a>
+    <br>
+    <br>
+    <h3>클릭시 링크 이동 (상대 경로)</h3>
+    <a href="08_table.html">테이블 사용법</a>
+    <!-- http://127.0.0.1:5500/HTML+CSS/ -->
+    <br>
+    <br>
+    <h3>클릭시 링크 이동 (상대 경로) - 에러 케이스</h3>
+    <a href="/08_table.html">테이블 사용법2</a>
+    <!-- http://127.0.0.1:5500/ 서버의 루트 경로를 참조해 없는 파일을 불러옴 -->
+    <br>
+    <br>
+    <h3>클릭시 파일 다운로드 (동일 경로)</h3>
+    <a href="08_table.zip">테이블 다운로드</a>
+    <br>
+    <br>
+    <h3>클릭시 파일 다운로드 (동일 경로, 하위 폴더)</h3>
+    <a href="download/08_table.zip">테이블 다운로드</a>
+    <br>
+    <br>
+    <h3>클릭시 파일 다운로드 (타 경로)</h3>
+    <a href="../download/08_table.zip">테이블 다운로드</a>
+</body>
+</html>

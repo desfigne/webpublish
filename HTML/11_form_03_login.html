@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>11. 폼 > 03. 로그인</title>
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <style>
+        img {width:22px;}
+    </style>
+</head>
+<body>
+    <h1 id="top">폼 태그 (Form Tag) - 로그인</h1>
+    <hr>
+    <br>
+    <div>
+        <form action="#">
+            <ul>
+                <li>
+                    <img style="width:200px;"
+                         src="images/login_profile-none(crop).png" alt="프로필-아이콘"/>
+                </li>
+                <li>
+                    <i class="fa-solid fa-envelope-open"></i> <input type="text" name="username" placeholder="username">
+                    <!-- id는 브라우저마다 HTML5 지원이 제각각이기에 name으로 처리하는 것을 권장 -->
+                </li>
+                <li>
+                    <i class="fa-solid fa-lock"></i> <input type="password" name="password" placeholder="password">
+                </li>
+                <li>
+                    <input type="radio" name="saveAccount" value="saveAccount"><span>Remember me</span>
+                    <input type="radio" name="forgotPassword" value="forgotPassword"><span>Forgot your password?</span>
+                </li>
+                <li> <button type="login">Login</button> </li>
+            </ul>
+        </form>
+    </div>
+</body>
+</html>
