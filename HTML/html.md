@@ -124,4 +124,22 @@ CSS은 HTML 안의 코드이나 방대한 관리를 위해 별개로 구분해 �
 
 
 
+## 별첨. 폰트 어썸 라이브러리
+<!--
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+  />
+-->
+위 내용을 복사해서 HTML 문서의 헤드 마지막 부분에 붙여넣기로 추가
+> https://fontawesome.com/ 사이트에 접속
+> 희망하는 리소스 검색 후 선택 **프로 딱지가 없는(무료) 버전으로 사용
+> 선택 창이 뜨면 HTML/SVG/REACT/VUE 등의 사용할 포맷을 선택후 아래 표시되는 코드를 복사
+> 자신이 사용하고자 하는 HTML 문서에 복사한 코드를 삽입(붙여넣기)하여 해당 리소스를 호출해 사용할 수 있음.
 
+
+
+
+
+
+-
