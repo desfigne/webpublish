@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>04. 선택자 > 10. 프슈도 클래스 선택자</title>
+    <style>
+        a:hover { color: white; background-color: blue; }
+        a[href="https://www.naver.com"]:hover { color: white; background-color: red; }
+        /* 코드가 길어져 클래스 아이디를 더 많이 사용 */
+        
+        a.naver:hover { color: black; background-color: aquamarine; }
+        a.google:hover { color: white; background-color: toamto; }
+        a.daum:hover { color: white; background-color: fuchsia; }
+
+        a.naver:active { text-decoration: none; }
+        a.naver:visited { color: red; }
+
+        input:focus { background-color: bisque; }
+        input[name="name"]:focus { background-color:gold; }
+
+        p::after { /* p 태그 뒤에 content에 해당하는 내용을 생성하여 추가하고, 글자 색상을 그린으로 변경 */
+            content: "After 텍스트 내용입니다.";
+            color: green;
+        }
+
+        p::before { /* p 태그 앞에 content에 해당하는 내용을 생성하여 추가하고, 글자 색상을 블루로 변경 */
+            content: "before 텍스트 내용입니다.";
+            color: blue;
+        }
+    </style>
+</head>
+<body>
+    <h3>지정 부여(단독/범위)</h3>
+    <h1>프슈도 클래스 셀렉터(pseudo class selector)</h1>
+    <hr>
+    <br>
+    <p>
+        <a href="https://www.naver.com" class="naver">Naver</a>
+        <a href="https://www.google.com" class="google">Google</a>
+        <a href="https://www.daum.com" class="daum">Daum</a>
+    </p>
+    <form action="#">
+        <ul>
+            <li>
+                <label for="name">이름</label>
+                <input type="text" name="name">
+            </li>
+            <li>
+                <label for="address">주소</label>
+                <input type="text" name="address">
+            </li>
+        </ul>
+    </form>
+</body>
+</html>

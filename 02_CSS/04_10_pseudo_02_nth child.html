@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>04. 선택자 > 10. 프슈도 선택자 > 02. 엔쓰 차일드</title>
+    <style>
+        ul > li:first-child,
+        ul > li:last-child {
+            background-color: yellow;
+        }
+        ul > li:nth-child(3) { color: red; }
+        td {
+            padding: 26px 30px;
+        }
+
+        .table1 tr:nth-child(2) td {
+            background-color: gold;
+            color: blue;
+        }
+
+        .table1 tr > td:nth-child(2) {
+            background-color: greenyellow;
+            color: blue;
+        }
+
+        /* 테이블의 짝수행에 배경색 정의 */
+        .table2 tr:nth-child(even) {
+            background-color: gray;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <h3>지정 부여(단독/범위)</h3>
+    <h1>프슈도 클래스 셀렉터(pseudo class selector) - 엔쓰 차일드</h1>
+    <hr>
+    <br>
+    <h3>Subject List</h3>
+    <ul>
+        <li>Java</li>
+        <li>MySQL</li>
+        <li>HTML</li>
+        <li>CSS</li>
+        <li>Javscript</li>
+        <li>React</li>
+    </ul>
+    <br>
+    <br>
+    <table class="table1" border="1">
+        <tr>
+            <td>1</td>
+            <td>2</td>
+            <td>3</td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>5</td>
+            <td>6</td>
+        </tr>
+        <tr>
+            <td>7</td>
+            <td>8</td>
+            <td>9</td>
+        </tr>
+    </table>
+    <br>
+    <table class="table2" border="1">
+        <tr>
+            <td>1</td>
+            <td>2</td>
+            <td>3</td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>5</td>
+            <td>6</td>
+        </tr>
+        <tr>
+            <td>7</td>
+            <td>8</td>
+            <td>9</td>
+        </tr>
+    </table>
+</body>
+</html>

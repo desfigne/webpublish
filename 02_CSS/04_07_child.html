@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>04. 선택자 > 07. 차일드 선택자</title>
+    <style>
+        #p > h1 { color: red; }
+        #p > div > h3 { color: green; }
+    </style>
+</head>
+<body id="p"> <!-- ---------------------------- body의 자식 관계는 h1, div 중 하나 -->
+    <h3>지정 부여(단독)</h3>
+    <h1>자식 셀렉터(Child selector)</h1>
+    <hr>
+    <br>
+    <div> <!-- -------------------------------- div의 자식 관계는 h3, ul 중 하나  -->
+        <h3>Sub Title</h3>
+        <ul> <!-- ----------------------------- ul의 자식 관계는 li -->
+            <li id="li1"><a href="#">네이버</a></li>
+        </ul>
+        <ol> <!-- ----------------------------- ol의 자식 관계는 li -->
+            <li id="li1"><a href="#">네이버</a></li>
+        </ol>
+    </div>
+</body>
+</html>

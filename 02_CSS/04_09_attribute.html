@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>04. 선택자 > 09. 어트리뷰트 선택자</title>
+    <style>
+        /* target="_blank" 태그를 찾아 배경색을 초록색으로 변경 */
+        [target="_blank"] { background-color: green; }
+        [type="submit"] { background-color: aqua; }
+        [for="address"] { color: red; }
+        input[name="name"] { background-color: purple; }
+        input[name="address"] { background-color: yellow; }
+    </style>
+</head>
+<body>
+    <h3>지정 부여(단독/범위)</h3>
+    <h1>어트리뷰트 셀렉터(Attribute selector)</h1>
+    <hr>
+    <br>
+    <p>
+        <a href="#" target="_blank">Naver</a>
+        <a href="#">Google</a>
+        <a href="#" target="_blank">Daum</a>
+    </p>
+    <form action="#">
+        <ul>
+            <li>
+                <label for="name">이름</label>
+                <input type="text" name="name">
+            </li>
+            <li>
+                <label for="address">주소</label>
+                <input type="text" name="address">
+            </li>
+            <li>
+                <button type="reset">다시쓰기</button>
+                <button type="submit">전송</button>
+            </li>
+        </ul>
+    </form>
+</body>
+</html>

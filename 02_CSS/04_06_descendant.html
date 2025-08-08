@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>04. 선택자 > 06. 디센던트 선택자</title>
+    <style>
+        /*
+            body h1 { color: navy; }
+            .p h1 { color: blue; }
+        */
+        #p h1 { color: purple; }
+        /*
+            범위 지정 대신 명확한 지정을 기준으로 사용을 권장, 바디 안에 유니크한 객체 설정이 필요
+        */
+
+        /* div 크기 300px, 배경색 yellow */
+        #p div { width: 300px; background-color: yellow; }
+
+        /* li */
+        #p div ul li a { color: red; }
+        #li1 a { color: blue; }
+        #p a { color: green; } /* body#p 태그에 포함된 모든 자손 태그 */
+    </style>
+</head>
+<body id="p"> <!-- ---------------------------- body의 자손 관계는 h1, div -->
+    <h3>지정 부여(범위)</h3>
+    <h1>자손 셀렉터(Descendant selector)</h1>
+    <hr>
+    <br>
+    <div> <!-- -------------------------------- div의 자손 관계는 h3, ul -->
+        <h3>Sub Title</h3>
+        <ul> <!-- ----------------------------- ul의 자손 관계는 li -->
+            <li id="li1"><a href="#">네이버</a></li>
+        </ul>
+        <ol> <!-- ----------------------------- ol의 자손 관계는 li -->
+            <li id="li1"><a href="#">네이버</a></li>
+        </ol>
+    </div>
+</body>
+</html>
