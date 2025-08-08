@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>04. 유닛</title>
+    <style>
+        .pixel {
+            width: 700px; /* 절대 사이즈 */
+            background-color: aquamarine;
+            overflow: hidden;
+            font-size: 7px; /* px: 픽셀, pt: 포인트, em: 단위 쓰여진 곳의 사이즈 배수 곱, rem: 16px 사이즈 배수 곱, vw, vh  */
+        }
+        .percent {
+            width: 100%; /* 상대 사이즈 */
+            background-color: tomato; }
+        .percent2 { display: inline-block; width: 49.62019%; background-color: navajowhite; }
+        
+        .h5-a {
+            width: 1300px; /* 크기 지정이 없을 시 부모의 크기를 따라가지만 부모의 크기보다 더 커질 경우 넘어서 크기가 지정됨 */
+            background-color: yellow;
+        }
+        .h5-b { background-color: greenyellow; }
+
+        .pixel-p{ width: 100%; background-color: aquamarine; }
+        .p-h5-a {
+            width: 25%; /* 크기 지정이 없을 시 부모의 크기를 따라가지만 부모의 크기보다 더 커질 경우 넘어서 크기가 지정됨 */
+            background-color: yellow;
+        }
+    </style>
+</head>
+<body>
+    <h1>CSS 단위</h1>
+    <hr>
+    <br>
+    <h2>픽셀(Pixel)</h2>
+    <div class="pixel">
+        <h5 class="h5-a">CSS - Pixel</h5>
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. <br>
+        Esse cumque saepe, libero voluptatibus pariatur voluptatem <br>
+        animi vero dolores est commodi eaque dolorum nihil sint, <br>
+        cupiditate placeat tempora obcaecati perferendis iusto.
+    </div>
+    <br>
+    <br>
+    <h2>퍼센트(Percent, %)</h2>
+    <div class="pixel-p">
+        <h5 class="p-h5-a">CSS - Pixel</h5>
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. <br>
+        Esse cumque saepe, libero voluptatibus pariatur voluptatem <br>
+        animi vero dolores est commodi eaque dolorum nihil sint, <br>
+        cupiditate placeat tempora obcaecati perferendis iusto.
+    </div>
+    <br>
+    <div class="percent">
+        <h5 class="h5-b">CSS - percent</h5>
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. <br>
+        Esse cumque saepe, libero voluptatibus pariatur voluptatem <br>
+        animi vero dolores est commodi eaque dolorum nihil sint, <br>
+        cupiditate placeat tempora obcaecati perferendis iusto.
+    </div>
+    <br>
+    <div class="percent2">
+        <h5 class="h5-b">CSS - percent - left</h5>
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. <br>
+        Esse cumque saepe, libero voluptatibus pariatur voluptatem <br>
+        animi vero dolores est commodi eaque dolorum nihil sint, <br>
+        cupiditate placeat tempora obcaecati perferendis iusto.
+    </div>
+    <div class="percent2">
+        <h5 class="h5-b">CSS - percent - right</h5>
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. <br>
+        Esse cumque saepe, libero voluptatibus pariatur voluptatem <br>
+        animi vero dolores est commodi eaque dolorum nihil sint, <br>
+        cupiditate placeat tempora obcaecati perferendis iusto.
+    </div>
+</body>
+</html>

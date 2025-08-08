@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>01. CSS 사용법</title>
+    <!--
+        - Inline 방식 : HTML 태그에 style 속성을 추가하여 작성
+          syntax> style = "프로퍼티 : 값;"
+        - Internal 방식 : HTML 파일의 head 태그에 페이지에서 호출되는 style 속성을 정리해둠
+        - External 방식 : style 속성을 별도의 파일로 생성하여 호출
+    -->
+
+    <!-- 01. CSS 사용법 - 02. Internal 방식 -->
+    <style> 
+        .internal {
+            color: blue;
+        }
+    </style>
+    <link rel="stylesheet" href="01_syntax_02_external.css">
+</head>
+<body>
+    <h1>01. CSS ( Cascading Style Sheets)</h1>
+    <hr>
+    <br>
+    <h1 style="color: coral">01. Inline 방식</h1>
+    <!--
+        기존에 논문에 글자 색상, 배경 색상을 바꾸는 정도의 수준이였으나
+        광고가 붙기 시작하면서 스타일이 점점 추가되고, CSS 파일로 분할하는 수준까지 확장함
+     -->
+    <br>
+    <h1 class="internal">02. Internal 방식</h1>
+    <br>
+    <h1 class="external">03. External 방식</h1>
+</body>
+</html>

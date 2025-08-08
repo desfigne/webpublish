@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>12. 비디오</title>
+</head>
+<body>
+    <h1>비디오 태그 (Video Tag) - video</h1>
+    <!-- 영상 데이터는 서버에 업로드하기 보단 타 스트리밍 서버에서 주소값만 호출하는 경우가 대부분이기에 비디오 태그는 잘 사용하지 않음 -->
+    <hr>
+    <br>
+    <h3>유튜브 src를 넣은 비디오 태그</h3>
+    <video src="https://www.youtube.com/embed/0uZ7l2fCwEg?si=QflaTwh56vptrxOZ"></video>
+    <br>
+    <h3>영상 데이터를 직접 다운로드 받아 프로젝트 폴더에 보관, 파일을 호출해 넣은 비디오 태그</h3>
+    <video src="videos/289855_tiny.mp4"
+        controls
+        autoplay>
+    </video>
+    <br>
+    <br>
+    <h1>아이프레임 태그 (Iframe Tag)</h1>
+    <hr>
+    <br>
+    <p>
+        <아이프레임 태그 시작> <br>
+        width="560" height="315" <br>
+        src="https://www.youtube.com/embed/0uZ7l2fCwEg?si=QflaTwh56vptrxOZ" <br>
+        title="YouTube video player" frameborder="0" <br>
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" <br>
+        referrerpolicy="strict-origin-when-cross-origin" <br>
+        allowfullscreen <br>
+        <아이프레임 태그 종료>
+        <!--
+            frame으로 잘라 구역을 나누었으나 연동성이 떨어져 현재는 사용하지 않고 iframe만 사용함
+            비디오 태그보다 iframe을 더 많이 씀, video 태그는 HTML5 코드여서 지원하지 않는 브라우저가 있을 수 있음
+            퍼블리셔에게 작업 요청 시 HTML5보다 HTML4로 코드 빌드 진행
+        -->
+    </p>
+    <br>
+    <iframe
+        width="800px" height="500px"
+        src="https://www.youtube.com/embed/0uZ7l2fCwEg?si=QflaTwh56vptrxOZ"
+        title="YouTube video player" frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        referrerpolicy="strict-origin-when-cross-origin"
+        allowfullscreen>
+    </iframe>
+</body>
+</html>
