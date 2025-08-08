@@ -15,16 +15,18 @@
 
 ## 3. 선택자(Selector) - Internal, External 에서 사용됨
 - 형식 : 선택자(selector) { 프로퍼티(Property) : 값(value); }
-- selector 종류 : HTML 태그, Class(.), Id(#)-이벤트 처리할 때 더 많이 사용
+- Selector 종류 : HTML 태그, Class(.), Id(#)-이벤트 처리할 때 더 많이 사용
 ㄴ All selector (또는 Universal selector라 칭함) : * - body 안의 모든 태그들을 선택해 스타일 부여(전체 폰트 타입, 레이아웃 사이즈, 여백을 조정 ...)
 ㄴ Tag selector : HTML 태그를 선택하여 스타일 정의
 ㄴ Class selector : HTML 태그에 class 속성을 추가하여 스타일 정의, style 태그에서는 dot(.)으로 선택
 ㄴ Id selector : HTML 태그에 id 속성을 추가하여 스타일 정의, style 태그에서는 sharph(#)으로 선택
-ㄴ descendant(자손) selector : HTML 태그의 포함관계를 통해 부모 자식 태그로 구분하여 선택, 부모와 자식을 "공백"으로 구분 (뎁스 제한없이 가능)
-ㄴ child(자식) selector : HTML 태그의 포함관계를 통해 부모 자식 태그로 구분하여 선택, 부모와 자식을 ">" 으로 구분 (하위 뎁스를 1단계까지만 인식해 처리)
+ㄴ Descendant(자손) selector : HTML 태그의 포함관계를 통해 부모 자식 태그로 구분하여 선택, 부모와 자식을 "공백"으로 구분 (뎁스 제한없이 가능)
+ㄴ Child(자식) selector : HTML 태그의 포함관계를 통해 부모 자식 태그로 구분하여 선택, 부모와 자식을 ">" 으로 구분 (하위 뎁스를 1단계까지만 인식해 처리)
 ㄴ Sibling selector (형제 선택자) : HTML 태그의 포함관계 중 같은 레벨에 있는 태그들을 형제로 구분, 시작태그 + 형제 태그(인접한) 선택, 시작태그 ~ 형제태그(모든)
 ㄴ Attribute selector(속성 선택자) : 태그의 속성값을 구분하여 스타일을 적용
-ㄴ pseudo class selector : 정해진 이벤트적 요솔르 실행하면서 스타일 적용 
+ㄴ Pseudo class selector : 정해진 이벤트적 요솔르 실행하면서 스타일 적용, pseudo 클래스명, :hover, :focus ...
+ㄴ Nth-child pseudo class selector : 반복되는 태그들의 순서를 통해 스타일 적용, :first-child, nth-child(수열) ...
+ㄴ Status pseudo class selector : HTML 태그의 disable, checked 속성을 통해 스타일 적용, :disabled, :checked
 
 
 
