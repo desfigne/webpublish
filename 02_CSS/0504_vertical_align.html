@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>05. 속성 > 03. 버티컬 얼라인</title>
+    <style>
+        .point { font-size: 52px; border: 1px solid blue; }
+        .align { font-size: 1rem; background-color: aquamarine; }
+
+        .base { vertical-align: baseline; }
+        .top { vertical-align: top; }
+        .middle { vertical-align: middle; }
+        .bottom { vertical-align: bottom; }
+        
+        img {border: 1px solid red; height: 50px; }
+        .label {
+            font-size: 14px;
+            vertical-align: top;
+            letter-spacing: 6px;
+            border: none;
+            background-color: aquamarine;
+        }
+    </style>
+</head>
+<body>
+    <!-- 버티컬 정렬은 블럭 레벨이 아닌 인라인 레벨에 속성을 부여해야 적용됨 -->
+    <h1>수직 정렬 (Vertical Align)</h1>
+    <hr>
+    <br>
+    <p>
+    <h3>수직 정렬 - 베이스</h3>
+        <span class="point">정렬 기준 라인</span>
+        <span class="base align">기초 정렬</span>
+    </p>
+    <br>
+    <p>
+    <h3>수직 정렬 - 탑</h3>
+        <span class="point">정렬 기준 라인</span>
+        <span class="top align">맨 위 정렬</span>
+    </p>
+    <br>
+    <p>
+    <h3>수직 정렬 - 미들</h3>
+        <span class="point">정렬 기준 라인</span>
+        <span class="middle align">중간 정렬</span>
+    </p>
+    <br>
+    <p>
+    <h3>수직 정렬 - 바텀</h3>
+        <span class="point">정렬 기준 라인</span>
+        <span class="bottom align">맨 아래 정렬</span>
+    </p>
+    <br>
+    <h3>수직 정렬 - 이미지</h3>
+    <img src="https://www.lottecinema.co.kr/NLCHS/Content/images/common/logo.png" alt="롯데시네마 로고">
+    <span class="point label">롯데시네마</span>
+    <br>
+    <br>
+</body>
+</html>

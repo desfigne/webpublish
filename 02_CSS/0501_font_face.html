@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>05. 속성 > 01. 폰트 페이스</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <!-- 생성하지 않고 외부에서 불러오는 것을 API라 칭함, 폰트 링크도 API -->
+
+    
+    <Style>
+        p {
+            float: left;
+        }
+        .loboto {
+            width: 30%;
+            font-family: "Roboto";
+            font-size: 2rem;
+        }
+        .pacifico {
+            width: 30%;
+            font-family: "pacifico";
+            font-size: 1rem;
+        }
+
+        @import url('https://fonts.googleapis.com/css2?family=Bitcount+Prop+Double:wght@100..900&display=swap');
+
+        .bitcount-prop-double {
+            font-family: "Bitcount Prop Double", system-ui;
+            font-optical-sizing: auto;
+            font-style: normal;
+            font-variation-settings:
+                "slnt" 0,
+                "CRSV" 0.5,
+                "ELSH" 0,
+                "ELXP" 0;
+            }
+    </Style>
+</head>
+<body>
+    <h1>폰트페이스 (Font Face)</h1>
+    <hr>
+    <br>
+    <h3>헤드 포함 방식 1</h3>
+    <p class="loboto">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+        Impedit, nobis deleniti magni labore eaque ipsum quam voluptate ea aperiam rem!
+        Quas dolor ad repellendus excepturi eius mollitia molestias dolorum inventore.
+    </p>
+    <br>
+    <h3>헤드 포함 방식 2</h3>
+    <p class="pacifico">
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+        A voluptates id sed molestias, consequuntur ex architecto at pariatur
+        sit illo tempore itaque quidem laudantium alias magni. Error ad nulla doloribus.
+    </p>
+    <h3>스타일 포함 방식</h3>
+    <p class="bitcount-prop-double">
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+        A voluptates id sed molestias, consequuntur ex architecto at pariatur
+        sit illo tempore itaque quidem laudantium alias magni. Error ad nulla doloribus.
+    </p>
+    
+</body>
+</html>

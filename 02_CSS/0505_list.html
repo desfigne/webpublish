@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>05. 속성 > 06. 리스트 스타일</title>
+    <style>
+        ul, ol, li { border: 1px solid gray; }
+
+        ul > li:nth-child(3) { list-style-type: square; }
+        ul > li:nth-child(4) { list-style-type: none; }
+        ol > li:nth-child(3) { list-style-type: "✅"; }
+        ul.no-space {
+            padding: 0;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>목록 스타일 (List Style)</h1>
+    <hr>
+    <br>
+    <h3>Ul</h3>
+    <ul>
+        <h3>Front-end</h3>
+        <li>HTML 4</li>
+        <li>HTML 5</li>
+        <li>테스트용 임시 리스트 3</li>
+    </ul>
+    <br>
+    <ul class="no-space">
+        <h3>Front-end</h3>
+        <li>HTML 4</li>
+        <li>HTML 5</li>
+        <li>테스트용 임시 리스트 3</li>
+    </ul>
+    <br>
+    <ol>
+        <h3>Back-end</h3>
+        <li>Node JS</li>
+        <li>Spring Boot</li>
+        <li>테스트용 임시 리스트 3</li>
+    </ol>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>05. 속성 > 06. 디스플레이 스타일</title>
+    <style>
+        div {
+            width: 100%;
+            background-color: aquamarine;
+            display: none;
+        }
+        span {
+            width: 100%;  /* 스판 태그는 인라인 레벨이여서 사이즈 조정 불가, 디스플레이로 블럭 부여해 사이즈 조정 가능 */
+            display: block;
+            background-color: tomato;
+        }
+        img.opacity {
+            width: 20%;
+            display: block;
+            opacity: 0.3;
+        }
+    </style>
+</head>
+<body>
+    <h1>화면 스타일 (Display Style)</h1>
+    <hr>
+    <br>
+    <div>블록 레벨</div>
+    <span>인라인 레벨</span>
+    <img src="https://cf2.lottecinema.co.kr/lotte_image/2025/Sicsa/Sicsa_98018088.jpg" alt="">
+    <img class="opacity" src="https://cf2.lottecinema.co.kr/lotte_image/2025/Sicsa/Sicsa_98018088.jpg" alt="">
+</body>
+</html>

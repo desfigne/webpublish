@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>05. 속성 > 03. 텍스트 얼라인</title>
+    <style>
+        p { background-color: aquamarine; }
+        .left { text-align: left; }
+        .center { text-align: center; }
+        .right { text-align: right; }
+        .px200 { width: 250px; }
+        .m-right { float: right; }
+
+        span { background-color: red; text-align: center; }
+        .justify { text-align: justify; line-height: 14px; }
+        .line-height { line-height: 40px; }
+        .text-indent { text-indent: 80px; }
+        .text-indent-under20px { text-indent: -60px; }
+        .pc200 { width: 50%; }
+
+        .letter { width: 350px; border: 1px solid blue; letter-spacing: 20px; }
+        .word { width: 350px; border: 1px solid blue; word-spacing: 40px; }
+
+        .text-transform-upc { text-transform: uppercase; }
+        .text-transform-cpt { text-transform: capitalize; }
+        .text-transform-lrc { text-transform: lowercase; }
+    </style>
+</head>
+<body>
+    <h1>텍스트 정렬 (Text Align)</h1>
+    <hr>
+    <br>
+    <h3>블럭 레벨 (Block Level)</h3>
+    <p class="left">Text Align - Left</p>
+    <p class="center">Text Align - Center</p>
+    <p class="right">Text Align - Right</p>
+    <br>
+    <p class="center px200">Text Align - Center</p>
+    <p class="left">Text Align - Left</p>
+    <p class="right px200">Text Align - Right</p>
+    <br>
+    <h3>인라인 레벨 (Inline Level)</h3>
+    <span>인라인 레벨</span>
+    <!-- 인라인 레벨로 사이즈가 없고, 정렬도 적용되지 않음 -->
+    <p class="center">Text Align - Center <span>Add Span</span></p>
+    <!-- 블럭 레벨에 태그를 주고 인라인에게 적용되게 처리하는 것을 권함 -->
+    <p class="justify">
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+    </p>
+    <br>
+    <p class="justify">
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Neque, ipsum, quis minus maxime earum repellat illum eaque porro illo necessitatibus, accusamus voluptas maiores. Commodi laborum, nam possimus asperiores ex consequuntur.
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Neque, ipsum, quis minus maxime earum repellat illum eaque porro illo necessitatibus, accusamus voluptas maiores. Commodi laborum, nam possimus asperiores ex consequuntur.
+    </p>
+    <p class="justify pc200 line-height text-transform-upc">
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Neque, ipsum, quis minus maxime earum repellat illum eaque porro illo necessitatibus, accusamus voluptas maiores. Commodi laborum, nam possimus asperiores ex consequuntur.
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Neque, ipsum, quis minus maxime earum repellat illum eaque porro illo necessitatibus, accusamus voluptas maiores. Commodi laborum, nam possimus asperiores ex consequuntur.
+    </p>
+    <br>
+    <p class="letter text-indent text-transform-cpt">
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Neque, ipsum, quis minus maxime earum repellat illum eaque porro illo necessitatibus, accusamus voluptas maiores. Commodi laborum, nam possimus asperiores ex consequuntur.
+    </p>
+    <p class="word m-right text-indent-under20px text-transform-lrc">
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Neque, ipsum, quis minus maxime earum repellat illum eaque porro illo necessitatibus, accusamus voluptas maiores. Commodi laborum, nam possimus asperiores ex consequuntur.
+    </p>
+</body>
+</html>

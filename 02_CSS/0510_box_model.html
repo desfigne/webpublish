@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>05. 속성 > 10. 박스 모델</title>
+    <style>
+        h3 {
+            border: 1px solid gray;
+            text-align: center;
+            padding: 10px;
+            /* background-color: aquamarine; */
+        }
+        .padding, .margin {
+            width: 36%;
+            padding: 0 20px;
+            margin: 10px;
+            float: left;
+        }
+
+        .padding { border: 1px solid blue; }
+        .margin { border: 1px solid red; }
+
+        /*
+        margin-top: 0px;
+        margin-right: 0px;
+        margin-bottom: 0px;
+        margin-left: 0px;
+        margin: 0px 0px 0px 0px; 위쪽, 오른쪽, 아래쪽, 왼쪽
+        margin: 0px 0px; 위/아래쪽, 왼/오른쪽
+
+        padding-top: 0px;
+        padding-right: 0px;
+        padding-bottom: 0px;
+        padding-left: 0px;
+        padding: 0px 0px 0px 0px; 위쪽, 오른쪽, 아래쪽, 왼쪽
+        padding: 0px 0px; 위/아래쪽, 왼/오른쪽
+
+        Margin, Padding, Border은
+        Top > Right > Bottom > Left 순서의 시계 방향으로 값을 정의
+        */
+
+        .padding h3 { padding: 50px 20px 30px 100px; }
+
+        .margin h3 { margin: 100px 30px 20px 50px; }
+
+        .inline {
+            border: 2px solid green;
+            /* padding: 20px 10px; */
+        }
+
+        .inline span {
+            border: 2px solid tomato;
+            padding: 20px;
+            /* margin: 20px; */
+            /* display: inline-block; */
+            
+            /*
+                패딩 : 인라인에서도 사용 가능
+                자신의 테두리 안으로 여백을 부여하기에 크기 할당없이도 가능,
+                그러나 부모 클래스보다 크기가 커질 수 있음
+
+                마진 : 인라인에서는 사용 불가(Left만 적용 가능), 인라인 블럭에서 사용 가능
+                인라인 레벨일 때는 크기 할당이 안되고 문자열만큼의 크기를 가짐,
+                인라인 블럭 레벨을 부여시 크기 할당되어 여백 부여 가능
+            */
+        }
+    </style>
+</head>
+<body>
+    <h1>박스 모델 (Box Model Style) - 컨텐츠, 보더, 패딩, 마진 (Content, Border, Padding, Margin)</h1>
+    <hr>
+    <br>
+    <div class="inline">
+        <span>Span test</span>
+    </div>
+    <div class="padding">
+        <h3>Padding</h3>
+        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Numquam perspiciatis nobis alias nesciunt, explicabo ipsam nam reiciendis repellat porro fugit neque amet iste incidunt corrupti aut officia quibusdam earum facilis.</p>
+    </div>
+    <div class="margin">
+        <h3>Margin</h3>
+        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Numquam perspiciatis nobis alias nesciunt, explicabo ipsam nam reiciendis repellat porro fugit neque amet iste incidunt corrupti aut officia quibusdam earum facilis.</p>
+    </div>
+</body>
+</html>

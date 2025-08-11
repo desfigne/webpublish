@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>05. 속성 > 07. 메뉴 리스트</title>
+    <style>
+        /* 각 메뉴 별 사이즈 체크용 코드
+            .header-left, .header-left ul, .header-left li, .header-right, .header-right ul, .header-right li {
+                border: 1px solid red;
+            }
+        */
+        
+        /* 각 메뉴 li에 가로 사이즈를 지정하면 글자 대응이 안되므로 지정없이 마진이나 패딩으로 간격 조정 */
+        .header-left { width: 19.6%; display: inline-block; }
+        .header-left ul { padding: 0; }
+        .header-left ul li { list-style: none; margin-right: 10px; display: inline-block; }
+        
+        .header-center { width: 60%; display: inline-block; text-align: center; }
+        .header-center .logo { max-width: 100%; }
+
+        .header-right { width: 19.6%; display: inline-block; }
+        .header-right ul { padding: 0; text-align: right; }
+        .header-right ul li { list-style: none; margin-left: 10px; display: inline-block; text-align: right; }
+
+        .header-left, .header-right {
+            vertical-align: bottom;
+        }
+
+        .header-left li a, .header-right li a {
+            text-decoration: none;
+            color: #000;
+            font-size: 14px;
+        }
+
+        header { border-bottom: 2px solid gray; padding-bottom: 18px; }
+    </style>
+</head>
+<body>
+    <h1>목록 스타일 (List Style)</h1>
+    <hr>
+    <br>
+    <header>
+        <nav class="header-left">
+            <ul>
+                <li> <a href="#">인스타그램</a> </li>
+                <li> <a href="#">유튜브</a> </li>
+                <li> <a href="#">페이스북</a> </li>
+            </ul>
+        </nav>
+        <div class="header-center">
+            <img class="logo" src="https://www.lottecinema.co.kr/NLCHS/Content/images/common/logo.png" alt="롯데시네마 로고">
+        </div>
+        <nav class="header-right">
+            <ul>
+                <li> <a href="#">멤버쉽</a> </li>
+                <li> <a href="#">고객센터</a> </li>
+                <li> <a href="#">단체관람/대관문의</a> </li>
+                <li> <a href="#">로그인</a> </li>
+            </ul>
+        </nav>
+    </header>
+</body>
+</html>

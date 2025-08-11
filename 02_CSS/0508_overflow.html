@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>05. 속성 > 08. 오버플로우</title>
+    <style>
+        .d1, .d2, .d3, .d4, .p1, .p2, .p3, .p4 { border: 1px solid red; }
+        .d1, .d2, .d3, .d4 {
+            width: 50%;
+            /* height: 50%; */
+            /* 컨텐츠가 길어지면 화면 스크롤링이 발생하므로 절대적 크기에 대한 개념이 없음, 따라서 퍼센트의 기준점을 잡을 수 없으므로 퍼센트는 적용 불가 */
+            height: 100px;
+
+            background-color: aquamarine;
+        }
+        .p1, .p2, .p3, .p4 {
+            width: 120%;
+            background-color: yellow;
+        }
+
+        .d2 {
+            overflow: hidden;
+        }
+
+        .d3 {
+            overflow: auto;
+        }
+
+        .d4 {
+            overflow-x: hidden;
+            overflow-y: scroll;
+        }
+    </style>
+</head>
+<body>
+    <h1>넘침 (Overflow)</h1>
+    <hr>
+    <br>
+    <h3>오버플로우 발생 (가로)</h3>
+    <div class="d1">
+        <p class="p1">
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laborum omnis possimus ut ex saepe. Tempore fuga facere aliquam et, beatae porro dolores pariatur ipsam distinctio delectus, suscipit, autem officiis nisi?
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Facilis voluptatem, tempore itaque dignissimos cupiditate quod natus corrupti commodi porro eos cum ratione et ipsam quo ex. Odio dolor doloremque laboriosam.
+        </p>
+    </div>
+    <br>
+    <h3>오버플로우 히든 (가로)</h3>
+    <div class="d2">
+        <p class="p2">
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laborum omnis possimus ut ex saepe. Tempore fuga facere aliquam et, beatae porro dolores pariatur ipsam distinctio delectus, suscipit, autem officiis nisi?
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Facilis voluptatem, tempore itaque dignissimos cupiditate quod natus corrupti commodi porro eos cum ratione et ipsam quo ex. Odio dolor doloremque laboriosam.
+        </p>
+    </div>
+    <br>
+    <h3>오버플로우 오토 (가로/세로)</h3>
+    <div class="d3">
+        <p class="p3">
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laborum omnis possimus ut ex saepe. Tempore fuga facere aliquam et, beatae porro dolores pariatur ipsam distinctio delectus, suscipit, autem officiis nisi?
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Facilis voluptatem, tempore itaque dignissimos cupiditate quod natus corrupti commodi porro eos cum ratione et ipsam quo ex. Odio dolor doloremque laboriosam.
+        </p>
+    </div>
+    <br>
+    <h3>오버플로우 히든/오토 (가로)</h3>
+    <div class="d4">
+        <p class="p4">
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laborum omnis possimus ut ex saepe. Tempore fuga facere aliquam et, beatae porro dolores pariatur ipsam distinctio delectus, suscipit, autem officiis nisi?
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Facilis voluptatem, tempore itaque dignissimos cupiditate quod natus corrupti commodi porro eos cum ratione et ipsam quo ex. Odio dolor doloremque laboriosam.
+        </p>
+    </div>
+</body>
+</html>
