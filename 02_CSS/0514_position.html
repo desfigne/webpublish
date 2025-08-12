@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>05. 속성 > 14. 포지션</title>
+    <style>
+        img { width: 150px; }
+
+        .relative-wrap > h3.bg { background-color: aquamarine; }
+        .relative-wrap > .relative > img {
+            position: relative;
+            top: 40px;
+            left: 140px;
+            border: 5px solid aquamarine;
+        }
+
+        .absolute-wrap > h3.bg { background-color: pink; }
+        .absolute-wrap > .absolute > img {
+            position: absolute;
+            top: 20px;
+            right: 10px;
+            border: 5px solid pink;
+        }
+
+        .fixed-wrap > h3.bg { background-color: palegreen; }
+        .fixed-wrap > .fixed > img {
+            position: fixed;
+            right: 10px;
+            bottom: 10px;
+            border: 5px solid palegreen;
+        }
+
+        .relative-absolute-wrap { border: 1px solid darkorange; }
+        .relative-absolute-wrap > h3.bg { background-color: darkorange; }
+        .relative-absolute-wrap > .relative-absolute {
+            position: relative;
+        }
+        .relative-absolute-wrap > .relative-absolute > img {
+            position: absolute;
+            top: 0px;
+            right: 0px;
+            border: 5px solid darkorange;
+        }
+
+        .relative-fixed-wrap { border: 1px solid violet; }
+        .relative-fixed-wrap > h3.bg { background-color: violet; }
+        .stickey-wrap > .stky-wrapper > .stickey, .stickey-wrap > .stky-wrapper > .side-bar { float: left; }
+        .stickey-wrap { padding: 0 15px; width: 100%; }
+        .stickey-wrap > .stky-wrapper > .stickey { width: 60%; }
+        .stickey-wrap > .stky-wrapper > .side-bar {
+            width: 120px;
+            padding: 20px;
+            background-color: brown;
+            color: white;
+            position: sticky;
+            top: 30px;
+        }
+        .stickey-wrap > .stky-wrapper {
+            position: relative;
+            border: 2px solid red;
+            width: 100%;
+        }
+        .cf::after {
+            content: "";
+            display: block;
+            clear: both;
+        }
+    </style>
+</head>
+<body>
+    <h1>포지션 (Position)</h1>
+    <hr>
+    <br>
+    <div class="relative-wrap">
+        <h3>포지션 - 릴레이티브 (Relative)</h3>
+        <h3 class="bg">릴레이티브</h3>
+        <h3 class="bg">릴레이티브</h3>
+        <h3 class="bg">릴레이티브</h3>
+        <h5>가장 인접한 상위 태그 하나를 기준점으로 작용함</h5>
+        <div class="relative">
+            <img src="../01_HTML/images/myee.jpg" alt="귀여운 양">
+        </div>
+        <h3 class="bg">릴레이티브</h3>
+    </div>
+    <br>
+    <hr>
+    <br>
+    <div class="absolute-wrap">
+        <h3>포지션 - 엡솔루트 (Absolute)</h3>
+        <h3 class="bg">엡솔루트</h3>
+        <h5>화면 전체를 기준점으로 오른쪽 끝에 배치함</h5>
+        <div class="absolute">
+            <img src="../01_HTML/images/myee.jpg" alt="귀여운 양">
+        </div>
+    </div>
+    <br>
+    <hr>
+    <br>
+    <div class="fixed-wrap">
+        <h3>포지션 - 픽스드 (Fixed)</h3>
+        <h3 class="bg">픽스드</h3>
+        <h5>화면 전체를 기준점으로 오른쪽 아래에 스크롤에 상관없이 고정적으로 배치함</h5>
+        <div class="fixed">
+            <img src="../01_HTML/images/myee.jpg" alt="귀여운 양">
+        </div>
+    </div>
+    <br>
+    <hr>
+    <br>
+    <div class="relative-absolute-wrap">
+        <h3>포지션 - 릴레이티브 + 엡솔루트 (Relative + Absolute)</h3>
+        <h3 class="bg">릴레이티브 + 엡솔루트</h3>
+        <h5>릴레이티브로 선언된 상위 태그를 기준점으로 오른쪽에 배치함</h5>
+        <div class="relative-absolute">
+            <img src="../01_HTML/images/myee.jpg" alt="귀여운 양">
+        </div>
+    </div>
+    <br>
+    <hr>
+    <br>
+    <div class="relative-fixed-wrap">
+        <h3>포지션 - 릴레이티브 + 픽스드 (Relative + Fixed)</h3>
+        <h3 class="bg">릴레이티브 + 픽스드</h3>
+        <h5>릴레이티브와 픽스드는 서로 연관이 없어 동작하지 않음</h5>
+    </div>
+    <br>
+    <hr>
+    <br>
+    <div class="stickey-wrap">
+        <h3>포지션 - 스티키 (Stickey) - 스크롤 다운 (Scroll Down)</h3>
+        <h5>릴레이티브로 선언된 상위 태그를 기준점으로 오른쪽에 붙여 왼쪽 위에 배치되고, 스크롤에 따라 고정됨</h5>
+        <div class="stky-wrapper cf">
+            <div class="stickey">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore similique quaerat dolorem maxime officiis optio fugit laudantium sapiente omnis, laboriosam, consectetur adipisci. Neque ex eligendi quae ea aperiam, unde quam.</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore similique quaerat dolorem maxime officiis optio fugit laudantium sapiente omnis, laboriosam, consectetur adipisci. Neque ex eligendi quae ea aperiam, unde quam.</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore similique quaerat dolorem maxime officiis optio fugit laudantium sapiente omnis, laboriosam, consectetur adipisci. Neque ex eligendi quae ea aperiam, unde quam.</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore similique quaerat dolorem maxime officiis optio fugit laudantium sapiente omnis, laboriosam, consectetur adipisci. Neque ex eligendi quae ea aperiam, unde quam.</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore similique quaerat dolorem maxime officiis optio fugit laudantium sapiente omnis, laboriosam, consectetur adipisci. Neque ex eligendi quae ea aperiam, unde quam.</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore similique quaerat dolorem maxime officiis optio fugit laudantium sapiente omnis, laboriosam, consectetur adipisci. Neque ex eligendi quae ea aperiam, unde quam.</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore similique quaerat dolorem maxime officiis optio fugit laudantium sapiente omnis, laboriosam, consectetur adipisci. Neque ex eligendi quae ea aperiam, unde quam.</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore similique quaerat dolorem maxime officiis optio fugit laudantium sapiente omnis, laboriosam, consectetur adipisci. Neque ex eligendi quae ea aperiam, unde quam.</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore similique quaerat dolorem maxime officiis optio fugit laudantium sapiente omnis, laboriosam, consectetur adipisci. Neque ex eligendi quae ea aperiam, unde quam.</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore similique quaerat dolorem maxime officiis optio fugit laudantium sapiente omnis, laboriosam, consectetur adipisci. Neque ex eligendi quae ea aperiam, unde quam.</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore similique quaerat dolorem maxime officiis optio fugit laudantium sapiente omnis, laboriosam, consectetur adipisci. Neque ex eligendi quae ea aperiam, unde quam.</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore similique quaerat dolorem maxime officiis optio fugit laudantium sapiente omnis, laboriosam, consectetur adipisci. Neque ex eligendi quae ea aperiam, unde quam.</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore similique quaerat dolorem maxime officiis optio fugit laudantium sapiente omnis, laboriosam, consectetur adipisci. Neque ex eligendi quae ea aperiam, unde quam.</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore similique quaerat dolorem maxime officiis optio fugit laudantium sapiente omnis, laboriosam, consectetur adipisci. Neque ex eligendi quae ea aperiam, unde quam.</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore similique quaerat dolorem maxime officiis optio fugit laudantium sapiente omnis, laboriosam, consectetur adipisci. Neque ex eligendi quae ea aperiam, unde quam.</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore similique quaerat dolorem maxime officiis optio fugit laudantium sapiente omnis, laboriosam, consectetur adipisci. Neque ex eligendi quae ea aperiam, unde quam.</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore similique quaerat dolorem maxime officiis optio fugit laudantium sapiente omnis, laboriosam, consectetur adipisci. Neque ex eligendi quae ea aperiam, unde quam.</p>
+            </div>
+            <div class="side-bar">
+                <h3>Side Bar</h3>
+                <P>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad, temporibus tempora sint enim dolore nulla vitae mollitia facilis quaerat atque unde illo voluptatibus eum porro neque. Dolore nam doloribus ipsa.</P>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

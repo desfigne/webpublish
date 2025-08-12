@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>05. 속성 > 15. 제트 인덱스</title>
+    <style>
+        div { width: 150px; height: 150px; color: #fff; text-align: center; }
+        div.red-child {
+            background-color: red; position: relative; top: 20px; left: 50px;
+            z-index: 3;
+        }
+        div.green-child {
+            background-color: green; position: relative; top: -10px; left: 90px;
+            z-index: 2;
+        }
+        div.blue-child {
+            background-color: blue; position: relative; top: -210px; left: 10px;
+            z-index: 1;
+        }
+    </style>
+</head>
+<body>
+    <h1>제트 인덱스 (Z-Index)</h1>
+    <hr>
+    <br>
+    <div class="red-child">Child #1</div>
+    <div class="green-child">Child #2</div>
+    <div class="blue-child">Child #3</div>
+</body>
+</html>

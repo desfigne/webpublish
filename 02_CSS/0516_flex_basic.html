@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>05. 속성 > 16. 플렉스 베이직</title>
+    <style>
+        .parent > * {
+            box-sizing: border-box;
+            margin: 0; padding: 0;
+        }
+        .parent {
+            height: 100px;
+            border: 4px solid green;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+        }
+        .parent2 { flex-direction: column; }
+        .parent3 { flex-direction: row-reverse; }
+        .parent4{ flex-direction: column-reverse; }
+        .parent5{ gap: 20px; }
+        .parent6{ justify-content: space-between; }
+        .parent7{ justify-content: space-around; }
+        .parent8{ align-items: baseline; }
+        .parent9{ align-items: center; }
+        .parent10{ align-items: end; }
+        .parent div {
+            background-color: bisque;
+            border: 1px solid salmon;
+            padding: 10px 20px;
+        }
+        .parent div:first-child {
+            background-color: aqua;
+        }
+        .parent div:last-child {
+            background-color: yellow;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+        }
+        .header-left > ul,
+        .header-right > ul {
+            margin: 0; padding: 0;
+            list-style: none;
+            display: flex;
+            gap: 10px;
+        }
+        .header-left > ul {
+            justify-content: space-around;
+            padding-top: 10px;
+        }
+        .header-left > ul {
+            gap: 10px;
+            padding-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>플렉스 기초 (Plex Basic)</h1>
+    <hr>
+    <br>
+    <h3>플렉스 디렉션 : 로우</h3>
+    <div class="parent">
+        <!-- div가 아닌 어떤 태그가 와도 디스플레이 플렉스 설정 가능 -->
+        <div>Flex Item 1</div>
+        <div>Flex Item 2</div>
+        <div>Flex Item 3</div>
+        <div>Flex Item 4</div>
+        <div>Flex Item 5</div>
+    </div>
+    <br>
+    <h3>플렉스 디렉션 : 컬럼</h3>
+    <div class="parent parent2">
+        <div>Flex Item 1</div>
+        <div>Flex Item 2</div>
+        <div>Flex Item 3</div>
+        <div>Flex Item 4</div>
+        <div>Flex Item 5</div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <h3>플렉스 디렉션 : 로우 리버스</h3>
+    <div class="parent parent3">
+        <div>Flex Item 1</div>
+        <div>Flex Item 2</div>
+        <div>Flex Item 3</div>
+        <div>Flex Item 4</div>
+        <div>Flex Item 5</div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <h3>플렉스 디렉션 : 컬럼 리버스</h3>
+    <div class="parent parent4">
+        <div>Flex Item 1</div>
+        <div>Flex Item 2</div>
+        <div>Flex Item 3</div>
+        <div>Flex Item 4</div>
+        <div>Flex Item 5</div>
+    </div>
+    <br>
+    <h3>플렉스 : 갭</h3>
+    <div class="parent parent5">
+        <div>Flex Item 1</div>
+        <div>Flex Item 2</div>
+        <div>Flex Item 3</div>
+        <div>Flex Item 4</div>
+        <div>Flex Item 5</div>
+    </div>
+    <br>
+    <h3>플렉스 저스티파이 컨텐츠 : 스페이스 비트윈</h3>
+    <div class="parent parent6">
+        <div>Flex Item 1</div>
+        <div>Flex Item 2</div>
+        <div>Flex Item 3</div>
+        <div>Flex Item 4</div>
+        <div>Flex Item 5</div>
+    </div>
+    <br>
+    <h3>플렉스 저스티파이 컨텐츠 : 스페이스 어라운드</h3>
+    <div class="parent parent7">
+        <div>Flex Item 1</div>
+        <div>Flex Item 2</div>
+        <div>Flex Item 3</div>
+        <div>Flex Item 4</div>
+        <div>Flex Item 5</div>
+    </div>
+    <br>
+    <h3>플렉스 얼라인 아이템 : 베이스라인</h3>
+    <div class="parent parent8">
+        <div>Flex Item 1</div>
+        <div>Flex Item 2</div>
+        <div>Flex Item 3</div>
+        <div>Flex Item 4</div>
+        <div>Flex Item 5</div>
+    </div>
+    <br>
+    <h3>플렉스 얼라인 아이템 : 센터</h3>
+    <div class="parent parent9">
+        <div>Flex Item 1</div>
+        <div>Flex Item 2</div>
+        <div>Flex Item 3</div>
+        <div>Flex Item 4</div>
+        <div>Flex Item 5</div>
+    </div>
+    <br>
+    <h3>플렉스 얼라인 아이템 : 엔드</h3>
+    <div class="parent parent10">
+        <div>Flex Item 1</div>
+        <div>Flex Item 2</div>
+        <div>Flex Item 3</div>
+        <div>Flex Item 4</div>
+        <div>Flex Item 5</div>
+    </div>
+    <br>
+    <h3>플렉스 : 헤더 메뉴 리스트</h3>
+    <header>
+        <nav class="header-left">
+            <ul>
+                <li> <a href="#">인스타그램</a> </li>
+                <li> <a href="#">유튜브</a> </li>
+                <li> <a href="#">페이스북</a> </li>
+            </ul>
+        </nav>
+        <div class="header-center">
+            <img class="logo" src="https://www.lottecinema.co.kr/NLCHS/Content/images/common/logo.png" alt="롯데시네마 로고">
+        </div>
+        <nav class="header-right">
+            <ul>
+                <li> <a href="#">멤버쉽</a> </li>
+                <li> <a href="#">고객센터</a> </li>
+                <li> <a href="#">단체관람/대관문의</a> </li>
+                <li> <a href="#">로그인</a> </li>
+            </ul>
+        </nav>
+    </header>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+</body>
+</html>

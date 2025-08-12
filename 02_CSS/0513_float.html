@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>05. 속성 > 13. 플로트</title>
+    <style>
+        .box-group, .box-group2, .box-group3, .box-group4, .box-group5 {
+            border: 1px solid red;
+            overflow: hidden;
+        }
+        .box-group > div {
+            width: 100px;
+            height: 100px;
+            background-color: aquamarine;
+            text-align: center;
+            border: 1px solid blue;
+            display: inline;
+        }
+        .box-group2 > div {
+            width: 100px;
+            height: 100px;
+            background-color: aquamarine;
+            text-align: center;
+            border: 1px solid blue;
+            display: inline-block;
+        }
+        .box-group3 > div, .box-group4 > div {
+            width: 100px;
+            height: 100px;
+            background-color: aquamarine;
+            text-align: center;
+            border: 1px solid blue;
+            float: left;
+        }
+        .box-group5 > div {
+            width: 100px;
+            height: 100px;
+            background-color: aquamarine;
+            text-align: center;
+            border: 1px solid blue;
+            float: left;
+            margin-right: 10px;
+        }
+        .box-group4 > p {
+            clear: left;
+        }
+        .box-group5 > p {
+            clear: both;
+        }
+        .menu-group {
+            border: 1px solid blue;
+            overflow: hidden;
+            background-color: darkgray;
+            padding: 0; margin: 20px 0;
+        }
+        .menu-group > ul, .list-image > ul {
+            padding: 0; margin: 0;
+        }
+        .menu-group > ul > li:nth-child(1) { margin-left: 0; }
+        .menu-group > ul > li {
+            list-style: none;
+            float: left;
+            margin-left: 16px;
+            padding: 10px 20px;
+            background-color: gray;
+        }
+        .menu-group > ul > li > a { text-decoration: none; color: white; }
+
+        .list-image > img { width: 30%; float: left; margin-right: 30px; }
+
+        .list-image2 > img { width: 30%; float: left; margin-right: 30px; }
+
+        .list-image3 { width: 50%; display: inline-block; vertical-align: top; }
+    </style>
+    
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+</head>
+<body>
+    <h1>뛰움 (Float) - 블록 레벨의 태그를 한줄로 정렬</h1>
+    <hr>
+    <br>
+    <h3>디스플레이 - 인라인</h3>
+    <div class="box-group">
+        <div>box 1</div>
+        <div>box 2</div>
+        <div>box 3</div>
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+            Maxime, corporis illum itaque iure excepturi, deleniti
+            incidunt a debitis optio exercitationem pariatur tempora.
+            Odit nisi delectus ut exercitationem aut, quae eius.
+        </p>
+    </div>
+    <br>
+    <h3>디스플레이 - 인라인 블럭</h3>
+    <div class="box-group2">
+        <div>box 1</div>
+        <div>box 2</div>
+        <div>box 3</div>
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+            Maxime, corporis illum itaque iure excepturi, deleniti
+            incidunt a debitis optio exercitationem pariatur tempora.
+            Odit nisi delectus ut exercitationem aut, quae eius.
+        </p>
+    </div>
+    <br>
+    <h3>플로트 - 레프트</h3>
+    <div class="box-group3">
+        <div>box 1</div>
+        <div>box 2</div>
+        <div>box 3</div>
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+            Maxime, corporis illum itaque iure excepturi, deleniti
+            incidunt a debitis optio exercitationem pariatur tempora.
+            Odit nisi delectus ut exercitationem aut, quae eius.
+        </p>
+    </div>
+    <br>
+    <h3>플로트 - 레프트 (클리어)</h3>
+    <div class="box-group4">
+        <div>box 1</div>
+        <div>box 2</div>
+        <div>box 3</div>
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+            Maxime, corporis illum itaque iure excepturi, deleniti
+            incidunt a debitis optio exercitationem pariatur tempora.
+            Odit nisi delectus ut exercitationem aut, quae eius.
+        </p>
+    </div>
+    <br>
+    <h3>플로트 - 레프트 (클리어 보쓰)</h3>
+    <div class="box-group5">
+        <div>box 1</div>
+        <div>box 2</div>
+        <div>box 3</div>
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+            Maxime, corporis illum itaque iure excepturi, deleniti
+            incidunt a debitis optio exercitationem pariatur tempora.
+            Odit nisi delectus ut exercitationem aut, quae eius.
+        </p>
+    </div>
+    <br>
+    <h3>float - 인라인 레벨에서는 동작하지 않음</h3>
+    <nav class="menu-group">
+        <ul>
+            <li><a href="#"><i class="fa-brands fa-instagram"></i> 인스타그램</a></li>
+            <li><a href="#"><i class="fa-brands fa-youtube"></i> 유튜브</a></li>
+            <li><a href="#"><i class="fa-brands fa-square-facebook"></i> 페이스북</a></li>
+        </ul>
+    </nav>
+    <br>
+    <h3>플로트 시 왼쪽 상단의 높이를 기준으로 내용이 맞춰짐</h3>
+    <div class="list-image">
+        <img src="../01_HTML/images/mongmung.jpg" alt="귀여운 강아지">
+        <p>
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+            Necessitatibus modi reiciendis, consequatur, dolorem repudiandae
+            perferendis pariatur voluptas ex error suscipit nam laborum
+            minima quisquam in vero ullam dignissimos quasi asperiores.
+        </p>
+    </div>
+    <br>
+    <div class="list-image2">
+        <img src="../01_HTML/images/nyaa.jpg" alt="귀여운 고양이">
+        <p>
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+            Necessitatibus modi reiciendis, consequatur, dolorem repudiandae
+            perferendis pariatur voluptas ex error suscipit nam laborum
+            minima quisquam in vero ullam dignissimos quasi asperiores.
+        </p>
+    </div>
+    <br>
+    <h3>플로트 시 왼쪽 상단의 높이를 기준으로 내용이 맞춰짐</h3>
+    <div class="list-image">
+        <img src="../01_HTML/images/mongmung.jpg" alt="귀여운 강아지">
+        <p>
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+            Necessitatibus modi reiciendis, consequatur, dolorem repudiandae
+            perferendis pariatur voluptas ex error suscipit nam laborum
+            minima quisquam in vero ullam dignissimos quasi asperiores.
+        </p>
+    </div>
+    <br>
+    <div class="list-image2 list-image3">
+        <img src="../01_HTML/images/nyaa.jpg" alt="귀여운 고양이">
+        <p>
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+            Necessitatibus modi reiciendis, consequatur, dolorem repudiandae
+            perferendis pariatur voluptas ex error suscipit nam laborum
+            minima quisquam in vero ullam dignissimos quasi asperiores.
+        </p>
+    </div>
+</body>
+</html>

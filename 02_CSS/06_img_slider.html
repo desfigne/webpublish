@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>06. 이미지 슬라이더</title>
+    <style>
+        div.header-left { position: relative; height: 120px; background-color: antiquewhite; }
+        .header-left > ul { padding: 0; margin: 0; position: absolute; right: 30px; top: 43px; }
+        .header-left > ul > li { list-style: none; float: left; padding: 5px 20px; background-color: lightgray; border: 1px solid gray; }
+        .header-left > ul > li > a { text-decoration: none; color: #777; }
+        .header-left > ul > li > a:hover { text-decoration: underline; color: red; }
+        .header-left > img { position: absolute; left: 15px; top: 15px; }
+
+        .image-wrapper { width: 90%; height: 320px; position: relative; margin: auto; border: 1px solid blue; text-align: center; }
+        .image-wrapper > img { height: 100%; }
+        .image-wrapper > button { position: absolute; top: 50%; background-color: black; color: white; border: none; padding: 10px 20px; }
+        .image-wrapper > .btn-prev { left: -34px; }
+        .image-wrapper > .btn-next { right: -34px; }
+</style>
+</head>
+<body>
+    <h1>이미지 슬라이더 (Image Slider)</h1>
+    <hr>
+    <br>
+    <h3>헤더 왼쪽 메뉴</h3>
+    <div class="header-left">
+        <img src="https://cgv.co.kr/_next/image?url=https%3A%2F%2Fcdn.cgv.co.kr%2Fcgvpomscontent%2Fips%2FunitCnts%2F2025%2F0610%2F900051d366c14ce4b4b91811794665b2.png&w=256&q=75" alt="CGV 로고">
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">로그인</a></li>
+            <li><a href="#">회원가입</a></li>
+        </ul>
+    </div>
+    <br>
+    <h3>이미지 슬라이더</h3>
+    <div class="image-wrapper">
+        <img src="https://cf2.lottecinema.co.kr/lotte_image/2025/Slayer/Slayer_1920774.jpg" alt="">
+        <button class="btn-prev">Prev</button>
+        <button class="btn-next">Next</button>
+    </div>
+</body>
+</html>
