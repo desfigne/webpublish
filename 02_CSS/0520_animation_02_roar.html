@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>인터넷 밈 스타일 호버 효과</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      overflow: hidden;
+      background-color: #111;
+    }
+
+    .meme-img {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 200px;
+      height: 200px;
+      background-image: url('../01_HTML/images/myee.jpg');
+      background-size: cover;
+      background-position: center;
+      cursor: pointer;
+      transform: translate(-50%, -50%);
+    }
+
+    .meme-img:hover {
+      animation: roarEffect 0.2s linear infinite;
+    }
+
+    @keyframes roarEffect {
+      0% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 1;
+      }
+      100% {
+        transform: translate(-50%, -50%) scale(10);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="meme-img"></div>
+</body>
+</html>
