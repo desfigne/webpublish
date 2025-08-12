@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>05. 속성 > 20. 애니메이션</title>
+    <style>
+        .box {
+            width: 200px; height: 200px;
+            background-color: yellow;
+        }
+        .box:hover {
+            width: 200px; height: 200px;
+            border: 1px solid silver;
+            /*
+                animation: name duration timing-function delay iteration-count direction fill-mode;
+            
+                animation:
+                name
+                duration
+                timing-function
+                delay
+                iteration-count
+                direction
+                fill-mode;
+            */
+            animation: changeColors 3s 0s 3; /* name, duration, delay, iteration-count */
+        }
+        @keyframes changeColors {
+            /* 시작할때 */ from { background-color: aqua; }
+            /* 중간위치 */ 50% { background-color: tomato; }
+            /* 종료할때 */ to { background-color: violet; }
+        }
+
+        .box-img {
+            background-size: 100% 100%;
+            transition: 3s;
+        }
+        .box-img:hover {
+            animation: changeImages 3s 0s infinite;
+        }
+        @keyframes changeImages {
+            /* 시작할때 */ from { background-image: url("../01_HTML/images/mongmung.jpg"); }
+            /* 중간위치 */ 50% { background-image: url("../01_HTML/images/nyaa.jpg"); }
+            /* 종료할때 */ to { background-image: url("../01_HTML/images/myee.jpg"); }
+        }
+    </style>
+</head>
+<body>
+    <h1>애니메이션 (Animation)</h1>
+    <hr>
+    <br>
+    <h3>프레임 - 박스</h3>
+    <div class="box">Box</div>
+    <br>
+    <h3>프레임 - 이미지</h3>
+    <div class="box box-img">Box</div>
+</body>
+</html>

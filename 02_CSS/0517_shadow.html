@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>05. 속성 > 17. 쉐도우</title>
+    <style>
+        .text { text-shadow: -8px -8px 3px rgba(0, 0, 0, 0.3) }
+        .box {
+            width: 30%; height: 50px;
+            background-color: bisque;
+            box-shadow: 5px 5px 15px #00000033;
+            /*
+            -webkit-box-shadow:;
+            -moz-box-shadow:;
+            */
+        }
+        input[type="text"] {
+            border: 2px solid rgba(38, 201, 238);
+            border-radius: 5px;
+            outline: none;
+        }
+        input[type="text"]:focus {
+            box-shadow: inset 5px 5px 15px rgba(38, 201, 238, 0.6);
+        }
+        .modal {
+            width: 300px;
+            height: 100px;
+            background-color: beige;
+            border: 1px solid silver;
+            position: fixed;
+            left: 50%;
+            top: 50%;
+            margin-left: -150px;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+    <h1>쉐도우 (Shadow)</h1>
+    <hr>
+    <br>
+    <h2 class="text">Text-Shadow</h2>
+    <h2 class="box">Box-Shadow</h2>
+    <input type="text">
+    <br>
+    <br>
+    <br>
+    <h1>모달 (Modal)</h1>
+    <hr>
+    <br>
+    <div class="modal">모달 컨텐츠</div>
+</body>
+</html>

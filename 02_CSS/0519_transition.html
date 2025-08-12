@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>05. 속성 > 19. 트랜지션</title>
+    <style>
+        .frame {
+            width: 300px;
+            height: 500px;
+            border: 1px solid gray;
+        }
+        .frame p {
+            background-color: aquamarine;
+            height: 50px;
+            margin: 0; padding: 0;
+            text-align: center;
+        }
+        .frame div {
+            height: 0;
+            background-color: tomato;
+            /*
+            transition-duration: 0.1s;
+            transition-property: height;
+            transition-delay: 0;
+            transition-timing-function: ease-in-out;
+            */
+            transition: height 0.1s 0s ease-in-out;
+        }
+        .frame p:hover + div {
+            height: 300px;
+        }
+    </style>
+</head>
+<body>
+    <h1>트랜지션 (Transition)</h1>
+    <hr>
+    <br>
+    <h3>프레임</h3>
+    <article class="frame">
+        <p>Frame Title</p>
+        <div></div>
+    </article>
+</body>
+</html>

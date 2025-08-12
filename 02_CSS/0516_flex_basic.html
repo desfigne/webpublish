@@ -25,24 +25,33 @@
         .parent8{ align-items: baseline; }
         .parent9{ align-items: center; }
         .parent10{ align-items: end; }
-        .parent div {
+        .parent > div {
             background-color: bisque;
             border: 1px solid salmon;
             padding: 10px 20px;
         }
-        .parent div:first-child {
+        .parent > div:first-child {
             background-color: aqua;
         }
-        .parent div:last-child {
+        .parent > div:last-child {
             background-color: yellow;
         }
 
         header {
+            border: 2px solid blue;
+            width: 100%;
+            height: 200px;
             display: flex;
             justify-content: space-between;
+            align-items: flex-end;
+        }
+        .header-center > .logo {
+            width: 300px;
+            border: 1px solid green;
         }
         .header-left > ul,
         .header-right > ul {
+            border: 1px solid red;
             margin: 0; padding: 0;
             list-style: none;
             display: flex;
@@ -52,7 +61,7 @@
             justify-content: space-around;
             padding-top: 10px;
         }
-        .header-left > ul {
+        .header-right > ul {
             gap: 10px;
             padding-top: 10px;
         }
