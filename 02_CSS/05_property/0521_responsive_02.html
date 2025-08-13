@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>05. 속성 > 21. 리스폰시브 02</title>
+    <style>
+        * { box-sizing: border-box; }
+        .wrapper {
+            width: 98%;
+            margin: 0 auto;
+            display: flex;
+        }
+        aside {
+            width: 160px;
+            flex-shrink: 0;
+        }
+        aside img { width: 96px; }
+        aside ul {
+            display: flex;
+            flex-direction: column;
+            padding: 0; margin: 0;
+        }
+        aside ul li {
+            list-style: none;
+            padding: 10px 0px;
+        }
+        aside ul li a {
+            text-decoration: none;
+            color: #000;
+            font-size: 15px;
+            font-weight: 600;
+        }
+        main {
+            background-color: beige;
+            flex: 1;
+            padding: 10px 20px;
+        }
+        @media screen and (max-width: 765px) {
+            aside { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <h1>반응형 (Responsive)</h1>
+    <hr>
+    <br>
+    <div class="wrapper">
+        <aside>
+            <img src="https://cgv.co.kr/_next/image?url=https%3A%2F%2Fcdn.cgv.co.kr%2Fcgvpomscontent%2Fips%2FunitCnts%2F2025%2F0610%2F900051d366c14ce4b4b91811794665b2.png&w=256&q=75" alt="CGV logo">
+            <ul>
+                <li>
+                    <a href="#">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path aria-hidden="true" fill-rule="evenodd" clip-rule="evenodd" d="M9.76668 2.76002C11.0153 1.74002 12.9815 1.75002 14.24 2.77002L20.6795 8.01001C21.584 8.76001 22.1444 10.26 21.9674 11.43L20.7287 18.97C20.4436 20.64 18.8705 22 17.209 22H6.78777C5.1066 22 3.56308 20.67 3.27797 18.98L2.03921 11.44C1.84258 10.26 2.40297 8.76001 3.32712 8.01001L9.76668 2.76002ZM12 18C13.1046 18 14 17.1046 14 16C14 14.8954 13.1046 14 12 14C10.8954 14 10 14.8954 10 16C10 17.1046 10.8954 18 12 18Z" fill="#242424"></path>
+                        </svg>
+                        홈
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path aria-hidden="true" d="M15.0603 19.3916C14.4403 19.8116 13.6603 20.1616 12.7103 20.4716L11.1303 20.9916C7.16034 22.2716 5.07034 21.2016 3.78034 17.2316L2.50034 13.2816C1.22034 9.31156 2.28034 7.21156 6.25034 5.93156L7.83034 5.41156C8.24034 5.28156 8.63034 5.17156 9.00034 5.10156C8.70034 5.71156 8.46034 6.45156 8.26034 7.30156L7.28034 11.4916C6.30034 15.6716 7.59034 17.7316 11.7603 18.7216L13.4403 19.1216C14.0203 19.2616 14.5603 19.3516 15.0603 19.3916Z" stroke="#242424" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path aria-hidden="true" d="M12.6406 8.53125L17.4906 9.76125" stroke="#242424" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path aria-hidden="true" d="M11.6602 12.3984L14.5602 13.1384" stroke="#242424" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path aria-hidden="true" d="M20.9602 5.09854C22.0402 6.29854 22.2302 8.01854 21.6602 10.4385L20.6802 14.6185C19.8402 18.2285 18.1802 19.6885 15.0602 19.3885C14.5602 19.3485 14.0202 19.2585 13.4402 19.1185L11.7602 18.7185C7.59018 17.7285 6.30018 15.6685 7.28018 11.4885L8.26018 7.29854C8.46018 6.44854 8.70018 5.70854 9.00018 5.09854C10.1702 2.67854 12.1602 2.02854 15.5002 2.81854L17.1702 3.20854" stroke="#242424" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                        </svg>
+                        씨네톡
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path aria-hidden="true" d="M23 10V9C23 5 22 4 18 4H6C2 4 1 5 1 9V9.5C2.38 9.5 3.5 10.62 3.5 12C3.5 13.38 2.38 14.5 1 14.5V15C1 19 2 20 6 20H18C22 20 23 19 23 15C21.62 15 20.5 13.88 20.5 12.5" stroke="#121212" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path aria-hidden="true" d="M9 4L9 20" stroke="#121212" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="5 5"></path>
+                        </svg>
+                        예매·예약
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path aria-hidden="true" d="M4.14453 9.85938L5.35976 20.2628C5.50693 21.5227 6.57437 22.4728 7.84288 22.4728H16.2773C17.4959 22.4728 18.537 21.5942 18.7418 20.393L20.0024 12.9995" stroke="#242424" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path aria-hidden="true" d="M16.3125 10.0391L15.2767 22.0391" stroke="#242424" stroke-width="1.5" stroke-linecap="round"></path><path aria-hidden="true" d="M7.6947 10.0391L8.73047 22.0391" stroke="#242424" stroke-width="1.5" stroke-linecap="round"></path><path aria-hidden="true" d="M12 10.0391L12 21.9565" stroke="#242424" stroke-width="1.5" stroke-linecap="round"></path><path aria-hidden="true" d="M5.03305 6.31758C4.17396 6.35914 3.25199 6.92764 3.04816 7.75312C2.84355 8.58175 3.03633 9.50482 3.6035 9.79902H20.4634C20.8364 9.4522 21.1248 8.53583 20.8752 7.75312C20.6256 6.9704 19.8252 6.41165 19.008 6.32442C19.0123 6.25661 19.0146 6.18818 19.0146 6.11918C19.0146 4.49833 17.787 3.18437 16.2728 3.18437C15.8514 3.18437 15.4523 3.28608 15.0957 3.46781C14.6926 2.24848 13.6059 1.375 12.3286 1.375C11.0398 1.375 9.94501 2.26442 9.55079 3.50112C9.06829 3.06951 8.44699 2.80975 7.76901 2.80975C6.23353 2.80975 4.98877 4.14213 4.98877 5.78569C4.98877 5.96725 5.00396 6.145 5.03305 6.31758Z" stroke="#242424" stroke-width="1.5" stroke-linejoin="round"></path><path aria-hidden="true" d="M15.8415 7.20639C15.6097 6.50562 14.9493 6 14.1708 6C13.3922 6 12.7318 6.50562 12.5 7.20639" stroke="#242424" stroke-width="1.5" stroke-linecap="round"></path><circle aria-hidden="true" cx="8.70156" cy="6.6" r="1.1" fill="#242424"></circle>
+                        </svg>
+                        매점
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <g aria-hidden="true" clip-path="url(#clip0_2700_19922)"><path d="M1 20.9963C2.04954 18.1483 4.78758 16.1172 8 16.1172C11.2124 16.1172 13.9505 18.1483 15 20.9963" stroke="#242424" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M3.77202 3.41401C4.94802 2.51801 6.404 2 8 2C11.864 2 15 5.136 15 9C15 12.864 11.864 16 8 16C4.136 16 1 12.864 1 9" stroke="#242424" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M10.5394 11.8828C9.82707 12.4025 8.94943 12.7093 8.00016 12.7093C7.05088 12.7093 6.17324 12.4025 5.46094 11.8828" stroke="#242424" stroke-width="1.5" stroke-linecap="round"></path><path d="M23 6H18" stroke="#242424" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M23 10H19" stroke="#242424" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M23 14H17" stroke="#242424" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></g><defs aria-hidden="true"><clipPath id="clip0_2700_19922"><rect width="24" height="24" fill="white"></rect></clipPath></defs>
+                        </svg>
+                        더보기
+                    </a>
+                </li>
+                <hr>
+                <li>
+                    <a href="#">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path aria-hidden="true" d="M12.2285 18.1381C14.4598 15.5862 18.1793 10.844 18.1793 7.58966C18.1793 6.03955 17.7801 4.70367 17.1157 3.60386C16.3246 2.29406 15.2809 1.4484 14.1657 0.873804C13.0506 0.299207 11.8098 0 10.5897 0C6.8897 0 3 2.75125 3 7.58966C3 10.844 6.71956 15.5862 8.95086 18.1381C9.82994 19.1435 11.3494 19.1435 12.2285 18.1381Z" fill="url(#paint0_linear_5942_19576)"></path><path aria-hidden="true" d="M10.5844 10.0594C12.1563 10.0594 13.4305 8.78518 13.4305 7.21331C13.4305 5.64144 12.1563 4.36719 10.5844 4.36719C9.01253 4.36719 7.73828 5.64144 7.73828 7.21331C7.73828 8.78518 9.01253 10.0594 10.5844 10.0594Z" fill="white"></path><defs aria-hidden="true"><linearGradient id="paint0_linear_5942_19576" x1="10.5897" y1="0" x2="10.5897" y2="19.9229" gradientUnits="userSpaceOnUse"><stop stop-color="#FF174F"></stop><stop offset="1" stop-color="#FF6637"></stop></linearGradient></defs>
+                        </svg>
+                        상영관 찾기
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path aria-hidden="true" fill-rule="evenodd" clip-rule="evenodd" d="M3.40371 10.0801L4.59227 1.90133C4.66747 1.38384 5.11113 1 5.63405 1H14.0341C14.557 1 15.0006 1.38384 15.0758 1.90133L16.2644 10.0801H17.5877C18.081 10.0801 18.5007 10.4399 18.576 10.9276L19.6562 17.9276C19.7497 18.5335 19.281 19.0801 18.6679 19.0801H1.00022C0.387144 19.0801 -0.0815884 18.5335 0.0119148 17.9276L1.09216 10.9276C1.16741 10.4399 1.58707 10.0801 2.08046 10.0801H3.40371Z" fill="url(#paint0_linear_5942_19578)"></path><path aria-hidden="true" d="M6.83398 15V7H9.97211C11.7898 7 12.834 8.12155 12.834 9.69613C12.834 11.2928 11.7732 12.3923 9.92791 12.3923H8.49144V15H6.83398ZM8.49144 11.0552H9.66271C10.6461 11.0552 11.1268 10.5028 11.1213 9.69613C11.1268 8.90055 10.6461 8.36464 9.66271 8.35912H8.49144V11.0552Z" fill="white"></path><defs aria-hidden="true"><linearGradient id="paint0_linear_5942_19578" x1="9.83647" y1="15.9395" x2="9.83647" y2="2.12799" gradientUnits="userSpaceOnUse"><stop stop-color="#FF6139"></stop><stop offset="1" stop-color="#FF184F"></stop></linearGradient></defs>
+                        </svg>
+                        특별관
+                    </a>
+                </li>
+            </ul>
+        </aside>
+        <main>
+            <h3>컨텐츠</h3>
+        </main>
+    </div>
+</body>
+</html>
