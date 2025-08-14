@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Dashboard - Web Designer, Frontend & Backend Developer</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+    <style>
+        /* Global Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+
+        body {
+            background-color: #f8f9fc;
+            color: #2c3e50;
+            line-height: 1.6;
+            overflow-x: hidden;
+            transition: background-color 0.3s ease;
+        }
+
+        /* Typography */
+        h1, h2, h3 {
+            font-weight: 700;
+            letter-spacing: -0.03em;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.2s ease;
+        }
+
+        /* Layout Structure - Enhanced Grid */
+        .dashboard {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            grid-template-rows: auto 1fr;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        /* Header - Refined with Subtle Shadow and Premium Feel */
+        .header {
+            grid-column: 1 / -1;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1.2rem 2.5rem;
+            background-color: #ffffff;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            z-index: 10;
+            transition: box-shadow 0.3s ease;
+        }
+
+        .header:hover {
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+        }
+
+        .header__logo {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: #007aff;
+            letter-spacing: -0.05em;
+        }
+
+        .header__nav {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .header__search {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .header__search input {
+            padding: 0.6rem 1.2rem 0.6rem 3rem;
+            border: 1px solid #e0e4e8;
+            border-radius: 24px;
+            width: 220px;
+            transition: width 0.3s ease, border-color 0.2s ease;
+            font-size: 0.95rem;
+        }
+
+        .header__search input:focus {
+            width: 280px;
+            outline: none;
+            border-color: #007aff;
+            box-shadow: 0 0 0 3px rgba(0, 122, 255, 0.1);
+        }
+
+        .header__search::before {
+            content: '\1F50D';
+            position: absolute;
+            left: 1.2rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #a0a8b0;
+            font-size: 1.1rem;
+        }
+
+        .header__profile {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            cursor: pointer;
+            padding: 0.4rem 1rem;
+            border-radius: 24px;
+            transition: background-color 0.2s ease;
+        }
+
+        .header__profile:hover {
+            background-color: #f0f4f8;
+        }
+
+        .header__profile img {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #e0e4e8;
+        }
+
+        /* Sidebar - Premium Navigation with Smooth Hover */
+        .sidebar {
+            background-color: #ffffff;
+            padding: 2.5rem 1.5rem;
+            border-right: 1px solid #e8ecef;
+            overflow-y: auto;
+            transition: width 0.3s ease;
+        }
+
+        .sidebar__menu {
+            list-style: none;
+        }
+
+        .sidebar__item {
+            margin-bottom: 0.8rem;
+        }
+
+        .sidebar__link {
+            display: flex;
+            align-items: center;
+            gap: 1.2rem;
+            padding: 0.9rem 1.2rem;
+            border-radius: 12px;
+            transition: background-color 0.2s ease, transform 0.2s ease;
+            font-size: 1rem;
+            font-weight: 500;
+        }
+
+        .sidebar__link:hover {
+            background-color: #f5f8fc;
+            transform: translateX(4px);
+        }
+
+        .sidebar__link.active {
+            background-color: #e9f2ff;
+            color: #007aff;
+            font-weight: 600;
+        }
+
+        .sidebar__icon {
+            font-size: 1.3rem;
+            min-width: 24px;
+        }
+
+        /* Main Content - Scrollable with Fade Effects */
+        .main {
+            padding: 2.5rem;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 2.5rem;
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Sections - Card-like with Lift on Hover */
+        .section {
+            background-color: #ffffff;
+            padding: 1.8rem;
+            border-radius: 16px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .section:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .section__title {
+            font-size: 1.4rem;
+            margin-bottom: 1.2rem;
+            border-bottom: 1px solid #e8ecef;
+            padding-bottom: 0.6rem;
+            color: #34495e;
+        }
+
+        /* 2-Column Layout - Balanced and Responsive */
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .card {
+            background-color: #fcfdfe;
+            padding: 1.2rem;
+            border-radius: 12px;
+            border: 1px solid #e8ecef;
+            transition: box-shadow 0.3s ease, border-color 0.2s ease;
+        }
+
+        .card:hover {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.06);
+            border-color: #d0d8e0;
+        }
+
+        .card__title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.6rem;
+            color: #2c3e50;
+        }
+
+        .card__desc {
+            font-size: 0.9rem;
+            color: #677685;
+        }
+
+        /* 3-Column Layout */
+        .three-column {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        /* Multi-Column Layout */
+        .multi-column {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 2rem;
+        }
+
+        /* Chart Placeholder - Gradient with Premium Look */
+        .chart {
+            height: 220px;
+            background: linear-gradient(135deg, #007aff, #4da1ff);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ffffff;
+            font-weight: 600;
+            font-size: 1.2rem;
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover .chart {
+            transform: scale(1.02);
+        }
+
+        /* Responsive Design - Smooth Transitions */
+        @media (max-width: 1024px) {
+            .dashboard {
+                grid-template-columns: 220px 1fr;
+            }
+
+            .sidebar {
+                width: 220px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .dashboard {
+                grid-template-columns: 1fr;
+                grid-template-rows: auto auto 1fr;
+            }
+
+            .header {
+                grid-column: 1;
+            }
+
+            .sidebar {
+                grid-row: 2;
+                border-right: none;
+                border-bottom: 1px solid #e8ecef;
+                overflow-x: auto;
+                padding: 1rem;
+            }
+
+            .sidebar__menu {
+                display: flex;
+                gap: 1.5rem;
+            }
+
+            .sidebar__item {
+                margin-bottom: 0;
+            }
+
+            .main {
+                grid-row: 3;
+                padding: 1.5rem;
+            }
+
+            .two-column,
+            .three-column,
+            .multi-column {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Dark Mode - High-End Dark Theme */
+        body.dark {
+            background-color: #0a0a0a;
+            color: #e0e0e0;
+        }
+
+        body.dark .header,
+        body.dark .sidebar,
+        body.dark .section,
+        body.dark .card {
+            background-color: #1c1c1e;
+            border-color: #333333;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        body.dark .header__logo {
+            color: #4da1ff;
+        }
+
+        body.dark .sidebar__link:hover {
+            background-color: #2a2a2e;
+        }
+
+        body.dark .sidebar__link.active {
+            background-color: #1e2a3c;
+            color: #4da1ff;
+        }
+
+        body.dark .card__desc {
+            color: #a0a0a0;
+        }
+
+        body.dark .chart {
+            background: linear-gradient(135deg, #4da1ff, #007aff);
+        }
+
+        body.dark .section__title {
+            color: #d0d0d0;
+        }
+
+        /* Theme Toggle - Elegant Icon */
+        .theme-toggle {
+            cursor: pointer;
+            font-size: 1.3rem;
+            transition: transform 0.3s ease;
+        }
+
+        .theme-toggle:hover {
+            transform: rotate(15deg);
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard">
+        <!-- Header -->
+        <header class="header">
+            <div class="header__logo">Portfolio Dashboard</div>
+            <nav class="header__nav">
+                <div class="header__search">
+                    <input type="text" placeholder="Search projects or skills...">
+                </div>
+                <div class="theme-toggle" onclick="document.body.classList.toggle('dark')">🌙</div>
+                <div class="header__profile">
+                    <img src="https://via.placeholder.com/36" alt="Profile">
+                    <span>John Doe</span>
+                </div>
+            </nav>
+        </header>
+
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <ul class="sidebar__menu">
+                <li class="sidebar__item">
+                    <a href="#" class="sidebar__link active">
+                        <span class="sidebar__icon">🏠</span>
+                        Overview
+                    </a>
+                </li>
+                <li class="sidebar__item">
+                    <a href="#" class="sidebar__link">
+                        <span class="sidebar__icon">🎨</span>
+                        Web Design
+                    </a>
+                </li>
+                <li class="sidebar__item">
+                    <a href="#" class="sidebar__link">
+                        <span class="sidebar__icon">💻</span>
+                        Frontend Development
+                    </a>
+                </li>
+                <li class="sidebar__item">
+                    <a href="#" class="sidebar__link">
+                        <span class="sidebar__icon">🛠️</span>
+                        Backend Development
+                    </a>
+                </li>
+                <li class="sidebar__item">
+                    <a href="#" class="sidebar__link">
+                        <span class="sidebar__icon">📁</span>
+                        Projects
+                    </a>
+                </li>
+                <li class="sidebar__item">
+                    <a href="#" class="sidebar__link">
+                        <span class="sidebar__icon">📞</span>
+                        Contact
+                    </a>
+                </li>
+            </ul>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main">
+            <!-- Overview Section (2-Column Layout) -->
+            <section class="section">
+                <h2 class="section__title">Career Overview</h2>
+                <div class="two-column">
+                    <div class="card">
+                        <h3 class="card__title">Projects Completed</h3>
+                        <p class="card__desc">Over 50 high-impact projects delivered</p>
+                        <div class="chart">Project Analytics</div>
+                    </div>
+                    <div class="card">
+                        <h3 class="card__title">Core Competencies</h3>
+                        <p class="card__desc">UI/UX Excellence: 98% | Full-Stack Proficiency: 95%</p>
+                        <div class="chart">Skills Visualization</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Recent Projects (3-Column Layout) -->
+            <section class="section">
+                <h2 class="section__title">Featured Projects</h2>
+                <div class="three-column">
+                    <div class="card">
+                        <h3 class="card__title">Premium E-Commerce Platform</h3>
+                        <p class="card__desc">React frontend with seamless UX, integrated Node.js backend</p>
+                    </div>
+                    <div class="card">
+                        <h3 class="card__title">Enterprise API System</h3>
+                        <p class="card__desc">Scalable Node.js & Express with MongoDB optimization</p>
+                    </div>
+                    <div class="card">
+                        <h3 class="card__title">High-End UI/UX Prototype</h3>
+                        <p class="card__desc">Figma designs translated to interactive prototypes</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Skills Breakdown (Multi-Column Layout) -->
+            <section class="section">
+                <h2 class="section__title">Expertise Breakdown</h2>
+                <div class="multi-column">
+                    <div class="card">
+                        <h3 class="card__title">HTML5 & CSS3</h3>
+                        <p class="card__desc">Pixel-perfect responsive layouts</p>
+                    </div>
+                    <div class="card">
+                        <h3 class="card__title">JavaScript & Frameworks</h3>
+                        <p class="card__desc">React, Vue.js for dynamic interfaces</p>
+                    </div>
+                    <div class="card">
+                        <h3 class="card__title">Backend Technologies</h3>
+                        <p class="card__desc">Node.js, Express, Databases (SQL/NoSQL)</p>
+                    </div>
+                    <div class="card">
+                        <h3 class="card__title">Design Tools</h3>
+                        <p class="card__desc">Figma, Adobe XD for premium visuals</p>
+                    </div>
+                    <div class="card">
+                        <h3 class="card__title">DevOps & Tools</h3>
+                        <p class="card__desc">Git, CI/CD pipelines</p>
+                    </div>
+                    <div class="card">
+                        <h3 class="card__title">Performance Optimization</h3>
+                        <p class="card__desc">SEO, Speed enhancements</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script>
+        // Enhanced JS for smooth interactions
+        document.querySelectorAll('.sidebar__link').forEach(link => {
+            link.addEventListener('click', (e) => {
+                document.querySelectorAll('.sidebar__link').forEach(l => l.classList.remove('active'));
+                e.currentTarget.classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>

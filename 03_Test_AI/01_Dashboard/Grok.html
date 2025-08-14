@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Dashboard - Web Designer, Frontend & Backend Developer</title>
+    <style>
+        /* Global Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+
+        body {
+            background-color: #f4f7fa;
+            color: #333;
+            line-height: 1.6;
+            overflow-x: hidden;
+            transition: background-color 0.3s ease;
+        }
+
+        /* Typography */
+        h1, h2, h3 {
+            font-weight: 600;
+            letter-spacing: -0.02em;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* Layout Structure */
+        .dashboard {
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            grid-template-rows: auto 1fr;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        /* Header */
+        .header {
+            grid-column: 1 / -1;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem 2rem;
+            background-color: #ffffff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            z-index: 10;
+        }
+
+        .header__logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1a73e8;
+        }
+
+        .header__nav {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .header__search {
+            position: relative;
+        }
+
+        .header__search input {
+            padding: 0.5rem 1rem 0.5rem 2.5rem;
+            border: 1px solid #ddd;
+            border-radius: 20px;
+            width: 200px;
+            transition: width 0.3s ease;
+        }
+
+        .header__search input:focus {
+            width: 250px;
+            outline: none;
+            border-color: #1a73e8;
+        }
+
+        .header__search::before {
+            content: '\1F50D';
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #888;
+        }
+
+        .header__profile {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            cursor: pointer;
+        }
+
+        .header__profile img {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            background-color: #ffffff;
+            padding: 2rem 1rem;
+            border-right: 1px solid #eee;
+            overflow-y: auto;
+            transition: width 0.3s ease;
+        }
+
+        .sidebar__menu {
+            list-style: none;
+        }
+
+        .sidebar__item {
+            margin-bottom: 1rem;
+        }
+
+        .sidebar__link {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 0.75rem 1rem;
+            border-radius: 8px;
+            transition: background-color 0.2s ease;
+        }
+
+        .sidebar__link:hover {
+            background-color: #f0f4f8;
+        }
+
+        .sidebar__link.active {
+            background-color: #e8f0fe;
+            color: #1a73e8;
+        }
+
+        .sidebar__icon {
+            font-size: 1.2rem;
+        }
+
+        /* Main Content */
+        .main {
+            padding: 2rem;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        /* Sections with Various Layouts */
+        .section {
+            background-color: #ffffff;
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            transition: transform 0.2s ease;
+        }
+
+        .section:hover {
+            transform: translateY(-2px);
+        }
+
+        .section__title {
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 0.5rem;
+        }
+
+        /* 2-Column Layout Example */
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        .card {
+            background-color: #f9fafc;
+            padding: 1rem;
+            border-radius: 8px;
+            border: 1px solid #eee;
+            transition: box-shadow 0.2s ease;
+        }
+
+        .card:hover {
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .card__title {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .card__desc {
+            font-size: 0.875rem;
+            color: #666;
+        }
+
+        /* 3-Column Layout Example */
+        .three-column {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+
+        /* 4+ Column Layout (Grid with Auto-Fit) */
+        .multi-column {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+        }
+
+        /* Chart Placeholder (Using CSS for Demo) */
+        .chart {
+            height: 200px;
+            background: linear-gradient(135deg, #1a73e8, #4285f4);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .dashboard {
+                grid-template-columns: 200px 1fr;
+            }
+
+            .sidebar {
+                width: 200px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .dashboard {
+                grid-template-columns: 1fr;
+                grid-template-rows: auto auto 1fr;
+            }
+
+            .header {
+                grid-column: 1;
+            }
+
+            .sidebar {
+                grid-row: 2;
+                border-right: none;
+                border-bottom: 1px solid #eee;
+                overflow-x: auto;
+            }
+
+            .sidebar__menu {
+                display: flex;
+                gap: 1rem;
+            }
+
+            .sidebar__item {
+                margin-bottom: 0;
+            }
+
+            .main {
+                grid-row: 3;
+            }
+
+            .two-column,
+            .three-column,
+            .multi-column {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Dark Mode */
+        body.dark {
+            background-color: #121212;
+            color: #e0e0e0;
+        }
+
+        body.dark .header,
+        body.dark .sidebar,
+        body.dark .section,
+        body.dark .card {
+            background-color: #1e1e1e;
+            border-color: #333;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        body.dark .header__logo {
+            color: #8ab4f8;
+        }
+
+        body.dark .sidebar__link:hover {
+            background-color: #2a2a2a;
+        }
+
+        body.dark .sidebar__link.active {
+            background-color: #1a2e4e;
+            color: #8ab4f8;
+        }
+
+        body.dark .card__desc {
+            color: #bbb;
+        }
+
+        body.dark .chart {
+            background: linear-gradient(135deg, #4285f4, #1a73e8);
+        }
+
+        /* Toggle for Dark Mode (Simple CSS Toggle) */
+        .theme-toggle {
+            cursor: pointer;
+            font-size: 1.2rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard">
+        <!-- Header -->
+        <header class="header">
+            <div class="header__logo">Portfolio Dashboard</div>
+            <nav class="header__nav">
+                <div class="header__search">
+                    <input type="text" placeholder="Search...">
+                </div>
+                <div class="theme-toggle" onclick="document.body.classList.toggle('dark')">🌙</div>
+                <div class="header__profile">
+                    <img src="https://via.placeholder.com/32" alt="Profile">
+                    <span>John Doe</span>
+                </div>
+            </nav>
+        </header>
+
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <ul class="sidebar__menu">
+                <li class="sidebar__item">
+                    <a href="#" class="sidebar__link active">
+                        <span class="sidebar__icon">🏠</span>
+                        Home
+                    </a>
+                </li>
+                <li class="sidebar__item">
+                    <a href="#" class="sidebar__link">
+                        <span class="sidebar__icon">🎨</span>
+                        Web Design
+                    </a>
+                </li>
+                <li class="sidebar__item">
+                    <a href="#" class="sidebar__link">
+                        <span class="sidebar__icon">💻</span>
+                        Frontend
+                    </a>
+                </li>
+                <li class="sidebar__item">
+                    <a href="#" class="sidebar__link">
+                        <span class="sidebar__icon">🛠️</span>
+                        Backend
+                    </a>
+                </li>
+                <li class="sidebar__item">
+                    <a href="#" class="sidebar__link">
+                        <span class="sidebar__icon">📁</span>
+                        Projects
+                    </a>
+                </li>
+                <li class="sidebar__item">
+                    <a href="#" class="sidebar__link">
+                        <span class="sidebar__icon">📞</span>
+                        Contact
+                    </a>
+                </li>
+            </ul>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main">
+            <!-- Overview Section (2-Column Layout) -->
+            <section class="section">
+                <h2 class="section__title">Overview</h2>
+                <div class="two-column">
+                    <div class="card">
+                        <h3 class="card__title">Total Projects</h3>
+                        <p class="card__desc">42 Completed</p>
+                        <div class="chart">Project Chart</div>
+                    </div>
+                    <div class="card">
+                        <h3 class="card__title">Skills Mastery</h3>
+                        <p class="card__desc">UI/UX: 95% | Coding: 90%</p>
+                        <div class="chart">Skills Radar</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Recent Projects (3-Column Layout) -->
+            <section class="section">
+                <h2 class="section__title">Recent Projects</h2>
+                <div class="three-column">
+                    <div class="card">
+                        <h3 class="card__title">E-Commerce Site</h3>
+                        <p class="card__desc">Frontend with React & Tailwind</p>
+                    </div>
+                    <div class="card">
+                        <h3 class="card__title">API Backend</h3>
+                        <p class="card__desc">Node.js & Express</p>
+                    </div>
+                    <div class="card">
+                        <h3 class="card__title">UI Kit Design</h3>
+                        <p class="card__desc">Figma Prototyping</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Skills Breakdown (Multi-Column Layout) -->
+            <section class="section">
+                <h2 class="section__title">Skills Breakdown</h2>
+                <div class="multi-column">
+                    <div class="card">
+                        <h3 class="card__title">HTML5/CSS3</h3>
+                        <p class="card__desc">Advanced Responsive Design</p>
+                    </div>
+                    <div class="card">
+                        <h3 class="card__title">JavaScript/ES6+</h3>
+                        <p class="card__desc">Frameworks: React, Vue</p>
+                    </div>
+                    <div class="card">
+                        <h3 class="card__title">Backend: Node.js</h3>
+                        <p class="card__desc">Databases: MongoDB, SQL</p>
+                    </div>
+                    <div class="card">
+                        <h3 class="card__title">UI/UX Tools</h3>
+                        <p class="card__desc">Figma, Adobe XD</p>
+                    </div>
+                    <div class="card">
+                        <h3 class="card__title">Version Control</h3>
+                        <p class="card__desc">Git & GitHub</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script>
+        // Simple JS for theme toggle (already handled in HTML onclick)
+    </script>
+</body>
+</html>

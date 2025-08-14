@@ -1,0 +1,847 @@
+<!-- ============================
+     4-1. 세련/고급 톤 디벨롭 — dashboard.html
+     ============================ -->
+<!doctype html>
+<html lang="ko" data-theme="auto">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Portfolio OS — Dashboard</title>
+  <meta name="color-scheme" content="light dark" />
+  <meta name="description" content="웹디자이너 · 프론트엔드 · 백엔드 포트폴리오 대시보드" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <style>
+    /* ===============================
+       Design Tokens
+       =============================== */
+    :root{
+      --hue: 225;
+      --bg: hsl(0 0% 100%);
+      --bg-elev: hsl(0 0% 100% / .55);
+      --panel: hsl(0 0% 100%);
+      --text: hsl(222 28% 12%);
+      --muted: hsl(222 10% 45%);
+      --border: hsl(222 20% 86%);
+      --accent: hsl(var(--hue) 88% 56%);
+      --accent-2: hsl(280 72% 60%);
+      --accent-weak: hsl(var(--hue) 88% 96%);
+      --success: hsl(156 60% 44%);
+      --warning: hsl(35 95% 52%);
+      --danger: hsl(352 80% 54%);
+      --glass: blur(14px) saturate(120%);
+      --shadow-sm: 0 6px 16px hsl(220 30% 20% / .08);
+      --shadow: 0 16px 40px hsl(220 30% 20% / .12);
+      --radius: 16px;
+      --radius-lg: 22px;
+      --gap-1: .5rem;
+      --gap-2: .75rem;
+      --gap-3: 1rem;
+      --gap-4: 1.25rem;
+      --gap-5: 1.75rem;
+      --gap-6: 2.25rem;
+      --container: 1260px;
+      --focus: 2px solid hsl(var(--hue) 90% 56% / .7);
+    }
+    @media (prefers-color-scheme: dark){
+      :root[data-theme="auto"]{
+        --bg: hsl(230 20% 10%);
+        --bg-elev: hsl(230 20% 12% / .5);
+        --panel: hsl(230 20% 14%);
+        --text: hsl(0 0% 98%);
+        --muted: hsl(220 10% 70%);
+        --border: hsl(220 18% 24%);
+        --accent-weak: hsl(var(--hue) 90% 20% / .35);
+        --shadow-sm: 0 6px 16px hsl(220 30% 2% / .5);
+        --shadow: 0 22px 60px hsl(220 30% 2% / .55);
+      }
+    }
+    :root[data-theme="dark"]{
+      --bg: hsl(230 20% 10%);
+      --bg-elev: hsl(230 20% 12% / .5);
+      --panel: hsl(230 20% 14%);
+      --text: hsl(0 0% 98%);
+      --muted: hsl(220 10% 70%);
+      --border: hsl(220 18% 24%);
+      --accent-weak: hsl(var(--hue) 90% 20% / .35);
+      --shadow-sm: 0 6px 16px hsl(220 30% 2% / .5);
+      --shadow: 0 22px 60px hsl(220 30% 2% / .55);
+    }
+
+    /* ===============================
+       Base
+       =============================== */
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font: 500 16px/1.62 ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Noto Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", "Helvetica Neue", Arial, "Segoe UI Emoji";
+      background:
+        radial-gradient(1200px 600px at 85% -20%, hsl(var(--hue) 90% 60% / .25), transparent 60%),
+        radial-gradient(900px 500px at -10% 0%, hsl(280 72% 60% / .2), transparent 60%),
+        var(--bg);
+      color: var(--text);
+      -webkit-font-smoothing: antialiased;
+    }
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+    :focus-visible{outline: var(--focus); outline-offset: 2px}
+    .visually-hidden{position:absolute!important;width:1px;height:1px;margin:-1px;padding:0;border:0;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+    .skip-link:focus{position:fixed;inset:auto auto 1rem 1rem;background:var(--panel);padding:.65rem .9rem;border:1px solid var(--border);border-radius:12px;box-shadow:var(--shadow);z-index:9999}
+
+    /* ===============================
+       Layout
+       =============================== */
+    .app{
+      display:grid;
+      grid-template-columns: 288px 1fr;
+      grid-template-rows: auto 1fr;
+      min-height:100dvh;
+    }
+    @media (width <= 1180px){ .app{ grid-template-columns: 80px 1fr } }
+
+    .sidebar{
+      grid-row: 1 / span 2;
+      position: sticky; top: 0;
+      display:flex; flex-direction:column; gap:var(--gap-3);
+      padding: var(--gap-5) var(--gap-4);
+      background: linear-gradient(180deg, var(--bg-elev), transparent 85%), var(--panel);
+      border-right:1px solid var(--border);
+      backdrop-filter: var(--glass);
+    }
+    .brand{
+      display:flex; align-items:center; gap:.9rem; font-weight:800; letter-spacing:.2px
+    }
+    .brand .logo{
+      width:40px;height:40px;border-radius:14px;
+      background: conic-gradient(from 220deg, var(--accent), var(--accent-2), var(--accent));
+      box-shadow: 0 6px 18px hsl(var(--hue) 90% 50% / .4), inset 0 0 0 1px hsl(0 0% 100% / .5);
+    }
+    .version{margin-left:auto;color:var(--muted);font-size:.78rem;border:1px dashed var(--border);padding:.2rem .5rem;border-radius:999px}
+
+    .nav{display:flex; flex-direction:column; gap:.35rem}
+    .nav button{
+      display:flex; align-items:center; gap:.8rem;
+      border:0; background:transparent; color:var(--text);
+      padding:.7rem .8rem; border-radius:12px; cursor:pointer;
+      transition: background .25s ease, transform .06s ease;
+    }
+    .nav button:hover{background:var(--accent-weak)}
+    .nav button[aria-pressed="true"]{background: linear-gradient(180deg, var(--accent-weak), transparent 120%); outline: 1px solid hsl(var(--hue) 80% 70% / .35)}
+    .nav svg{width:20px;height:20px}
+
+    .topbar{
+      position: sticky; top: 0; z-index: 20;
+      display:flex; align-items:center; gap:var(--gap-3);
+      padding: var(--gap-4);
+      background: linear-gradient(180deg, var(--bg-elev), transparent 85%);
+      border-bottom:1px solid var(--border);
+      backdrop-filter: var(--glass);
+    }
+    .search{
+      flex:1; display:flex; align-items:center; gap:.6rem;
+      background:linear-gradient(180deg, hsl(0 0% 100% / .6), transparent), var(--panel);
+      border:1px solid var(--border); border-radius: 999px;
+      padding:.6rem .9rem; box-shadow: var(--shadow-sm);
+    }
+    .search input{border:0; outline:0; background:transparent; width:100%}
+    .actions{display:flex; align-items:center; gap:.6rem}
+    .btn{
+      display:inline-flex; align-items:center; gap:.5rem;
+      border:1px solid var(--border); background:var(--panel);
+      padding:.6rem .9rem; border-radius:999px; cursor:pointer;
+      transition: transform .06s ease, background .2s ease, border-color .2s ease;
+    }
+    .btn:hover{background:var(--accent-weak)}
+    .btn:active{transform: translateY(1px)}
+    .btn.primary{
+      background: linear-gradient(180deg, var(--accent), hsl(var(--hue) 88% 52%));
+      color:white; border-color: transparent; box-shadow: 0 8px 18px hsl(var(--hue) 90% 50% / .35);
+    }
+    .avatar{width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,#ffd2a1,#ff7ab6)}
+
+    .subnav{
+      display:flex; align-items:center; justify-content:space-between; gap:var(--gap-3);
+      padding: 0 var(--gap-4) var(--gap-3); margin-top:.1rem;
+    }
+    .tabs{display:flex; gap:.45rem; flex-wrap:wrap}
+    .tab{
+      border:1px solid var(--border);
+      background: var(--panel);
+      padding:.5rem .9rem; border-radius:999px; cursor:pointer;
+      font-weight:700; letter-spacing:.2px; box-shadow: var(--shadow-sm);
+    }
+    .tab[aria-selected="true"]{background:linear-gradient(180deg,var(--accent),hsl(var(--hue) 88% 52%)); color:white; border-color:transparent}
+    .segmented{display:inline-flex;border:1px solid var(--border);border-radius:999px;padding:.2rem;background:var(--panel)}
+    .segmented button{border:0;background:transparent;padding:.45rem .8rem;border-radius:999px;cursor:pointer}
+    .segmented button[aria-pressed="true"]{background:var(--accent-weak); outline:1px solid hsl(var(--hue) 70% 70% / .35)}
+    #density{min-width:68px;text-align:center}
+
+    main{
+      padding: 0 var(--gap-4) var(--gap-6);
+      max-width: calc(var(--container) + 2*var(--gap-4));
+      width:100%; margin: 0 auto; display:flex; flex-direction:column; gap:var(--gap-5);
+    }
+
+    /* ===============================
+       Cards & Grids
+       =============================== */
+    .grid{display:grid; gap: var(--gap-4)}
+    .grid[data-columns="2"]{grid-template-columns: repeat(2, minmax(0, 1fr))}
+    .grid[data-columns="3"]{grid-template-columns: repeat(3, minmax(0, 1fr))}
+    .grid[data-columns="4"]{grid-template-columns: repeat(4, minmax(0, 1fr))}
+    @media (width <= 1200px){
+      .grid[data-columns="4"]{grid-template-columns: repeat(3, minmax(0, 1fr))}
+      .grid[data-columns="3"]{grid-template-columns: repeat(2, minmax(0, 1fr))}
+    }
+    @media (width <= 820px){ .grid{grid-template-columns: 1fr !important} }
+
+    .card{
+      background: linear-gradient( to bottom, hsl(0 0% 100% / .6), transparent), var(--panel);
+      border: 1px solid var(--border); border-radius: var(--radius-lg);
+      box-shadow: var(--shadow); overflow: clip; display:flex; flex-direction:column;
+      transform: translate3d(0, 0, 0); will-change: transform, box-shadow;
+    }
+    .card:hover{ box-shadow: 0 26px 70px hsl(220 30% 20% / .18); transform: translateY(-2px) }
+    .card .hd{display:flex; align-items:center; justify-content:space-between; gap:var(--gap-2); padding: 1.1rem 1.1rem .6rem}
+    .card .hd h3{margin:0; font-size: clamp(15px, 1.6vw, 18px)}
+    .card .bd{padding: 0 1.1rem 1.1rem}
+    .card .ft{padding: .8rem 1.1rem; border-top:1px dashed var(--border); font-size:.92rem; color:var(--muted); display:flex; gap:.75rem; flex-wrap:wrap}
+
+    .stat-row{display:grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap:var(--gap-4)}
+    @media (width <= 1100px){ .stat-row{grid-template-columns: repeat(2, minmax(0,1fr))} }
+    @media (width <= 680px){ .stat-row{grid-template-columns: 1fr} }
+    .stat{
+      background: linear-gradient(180deg, var(--accent-weak), transparent 140%), var(--panel);
+      border:1px solid var(--border); border-radius: var(--radius-lg); padding: 1.1rem 1.2rem;
+      display:flex; align-items:center; gap:1rem; box-shadow: var(--shadow);
+    }
+    .stat .ico{width:46px;height:46px;border-radius:14px;display:grid;place-items:center;background:linear-gradient(180deg,var(--accent),hsl(var(--hue) 90% 46%));color:white;box-shadow:0 10px 22px hsl(var(--hue) 90% 40% / .4)}
+    .stat .val{font-size: clamp(22px, 2.6vw, 30px); font-weight:800; letter-spacing:.2px}
+    .stat .lbl{color:var(--muted); font-size:.95rem}
+
+    .media{
+      aspect-ratio: 16 / 9;
+      background:
+        linear-gradient(180deg, hsl(0 0% 100% / .12), transparent),
+        repeating-linear-gradient(135deg, hsl(var(--hue) 90% 56% / .18) 0 10px, transparent 10px 20px),
+        linear-gradient(135deg, hsl(280 80% 65% / .18), transparent 65%),
+        hsl(220 20% 94%);
+      border-radius: 14px; border:1px solid var(--border);
+    }
+    @media (prefers-color-scheme: dark){
+      .media{background:
+        linear-gradient(180deg, hsl(0 0% 100% / .06), transparent),
+        repeating-linear-gradient(135deg, hsl(var(--hue) 90% 56% / .1) 0 10px, transparent 10px 20px),
+        linear-gradient(135deg, hsl(280 80% 65% / .08), transparent 65%),
+        hsl(230 20% 18%);
+      }
+    }
+
+    .chips{display:flex; flex-wrap:wrap; gap:.45rem}
+    .chip{padding:.36rem .72rem; border-radius:999px; border:1px solid var(--border); background: linear-gradient(180deg, var(--accent-weak), transparent 150%); font-size:.85rem}
+    .progress{height:10px; background: hsl(220 16% 92%); border-radius:999px; overflow:hidden; border:1px solid var(--border)}
+    .progress .bar{height:100%; width:var(--value,0%); background: linear-gradient(90deg, var(--accent), var(--accent-2))}
+    @media (prefers-color-scheme: dark){ .progress{background:hsl(230 24% 18%)} }
+
+    .list{display:grid; gap:.8rem}
+    .list .item{display:flex; gap:.8rem; align-items:flex-start}
+    .badge{display:inline-flex; align-items:center; gap:.35rem; padding:.2rem .55rem; border-radius:999px; background: hsl(220 16% 96%); color: var(--muted); border:1px solid var(--border); font-size:.8rem}
+    @media (prefers-color-scheme: dark){ .badge{background:hsl(230 24% 18%)} }
+
+    .timeline{position:relative; padding-left:1rem}
+    .timeline::before{content:""; position:absolute; left:6px; top:.2rem; bottom:.2rem; width:2px; background:linear-gradient(to bottom, var(--accent), transparent); border-radius:999px}
+    .timeline .t-item{position:relative; padding-left:1.2rem; margin:.7rem 0}
+    .timeline .t-item::before{content:""; position:absolute; left:-2px; top:.35rem; width:10px; height:10px; border-radius:50%; background:var(--accent); box-shadow: 0 0 0 4px hsl(var(--hue) 90% 56% / .15)}
+
+    .kpi{display:grid; grid-template-columns: 1fr 1fr; gap:.8rem; margin-top:.6rem; font-size:.92rem; color:var(--muted)}
+    .kpi div{display:flex; justify-content:space-between}
+
+    .footer-note{font-size:.88rem; color:var(--muted); text-align:center; margin-top:.2rem}
+
+    .fab{
+      position:fixed; right: 22px; bottom: 22px; z-index: 80;
+      border:0; border-radius: 20px; padding:.95rem 1.15rem;
+      background: linear-gradient(180deg, var(--accent), hsl(var(--hue) 90% 45%));
+      color:white; display:flex; align-items:center; gap:.6rem; box-shadow: 0 16px 32px hsl(var(--hue) 90% 40% / .45); cursor:pointer;
+    }
+
+    .row{display:flex; gap:.6rem; flex-wrap:wrap; align-items:center}
+    .spacer{flex:1}
+    .muted{color:var(--muted)}
+    .mono{font-variant-numeric: tabular-nums; font-feature-settings: "tnum" 1}
+    .nowrap{white-space:nowrap}
+
+    /* Reveal on scroll */
+    [data-reveal]{opacity:0; transform: translateY(14px); transition: opacity .6s ease, transform .6s cubic-bezier(.2,.8,.2,1)}
+    [data-reveal].is-in{opacity:1; transform: translateY(0)}
+
+    /* Print */
+    @media print{
+      .sidebar, .topbar, .subnav, .fab{display:none}
+      main{max-width:100%; padding:0}
+      .card, .stat{break-inside:avoid}
+    }
+    @media (prefers-reduced-motion: reduce){
+      *{animation:none !important; transition:none !important; scroll-behavior:auto !important}
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#content">본문으로 건너뛰기</a>
+
+  <!-- SVG Icons -->
+  <svg xmlns="http://www.w3.org/2000/svg" class="visually-hidden">
+    <symbol id="i-home" viewBox="0 0 24 24" fill="currentColor"><path d="M3 10.5 12 3l9 7.5V21a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></symbol>
+    <symbol id="i-grid" viewBox="0 0 24 24" fill="currentColor"><path d="M3 3h8v8H3zM13 3h8v8h-8zM3 13h8v8H3zM13 13h8v8h-8z"/></symbol>
+    <symbol id="i-rocket" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2c3.5 0 7 2.4 8 6l-5 5-4-4 5-5c-1-.4-2-.6-3-.6-4.4 0-8 3.6-8 8 0 1 .2 2 .6 3l-2.5 2.5c-.6.6-1.6.2-1.7-.7C1.1 10 5.8 2 12 2z"/><path d="M14.5 12.5 21 19v3h-3l-6.5-6.5"/></symbol>
+    <symbol id="i-moon" viewBox="0 0 24 24" fill="currentColor"><path d="M21 12.79A9 9 0 0 1 11.21 3a7 7 0 1 0 10.13 9.79z"/></symbol>
+    <symbol id="i-bolt" viewBox="0 0 24 24" fill="currentColor"><path d="M13 2 3 14h7l-1 8 10-12h-7z"/></symbol>
+    <symbol id="i-eye" viewBox="0 0 24 24" fill="currentColor"><path d="M12 5C7 5 2.73 8.11 1 12c1.73 3.89 6 7 11 7s9.27-3.11 11-7c-1.73-3.89-6-7-11-7zm0 12a5 5 0 1 1 0-10 5 5 0 0 1 0 10z"/></symbol>
+    <symbol id="i-code" viewBox="0 0 24 24" fill="currentColor"><path d="m9 18-6-6 6-6 1.4 1.4L6.8 12l3.6 3.6zm6-12 6 6-6 6-1.4-1.4 3.6-3.6-3.6-3.6z"/></symbol>
+    <symbol id="i-github" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5a11.5 11.5 0 0 0-3.64 22.42c.58.11.8-.25.8-.56v-2c-3.26.71-3.95-1.57-3.95-1.57-.53-1.35-1.3-1.71-1.3-1.71-1.06-.72.08-.71.08-.71 1.17.08 1.78 1.2 1.78 1.2 1.04 1.78 2.74 1.27 3.4.97.11-.76.41-1.27.75-1.56-2.6-.29-5.34-1.3-5.34-5.79 0-1.28.46-2.33 1.2-3.15-.12-.29-.52-1.46.11-3.05 0 0 .98-.31 3.2 1.2a11 11 0 0 1 5.82 0c2.22-1.51 3.2-1.2 3.2-1.2.63 1.59.23 2.76.11 3.05.74.82 1.2 1.87 1.2 3.15 0 4.5-2.74 5.49-5.35 5.78.42.36.8 1.08.8 2.18v3.23c0 .31.21.67.81.56A11.5 11.5 0 0 0 12 .5z"/></symbol>
+    <symbol id="i-external" viewBox="0 0 24 24" fill="currentColor"><path d="M14 3h7v7h-2V6.4l-9.3 9.3-1.4-1.4L17.6 5H14z"/><path d="M5 5h6v2H7v10h10v-4h2v6H5z"/></symbol>
+    <symbol id="i-filter" viewBox="0 0 24 24" fill="currentColor"><path d="M3 5h18v2l-7 7v5l-4-2v-3L3 7z"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24" fill="currentColor"><path d="M20.3 5.7 9 17l-5.3-5.3 1.4-1.4L9 14.2l9.9-9.9z"/></symbol>
+  </svg>
+
+  <div class="app">
+    <!-- SIDEBAR -->
+    <aside class="sidebar" aria-label="주 메뉴">
+      <div class="brand">
+        <div class="logo" aria-hidden="true"></div>
+        <span>Portfolio OS</span>
+        <span class="version mono">v1.1</span>
+      </div>
+
+      <nav class="nav" id="primary-nav">
+        <button class="nav-btn" aria-pressed="true" data-section="overview"><svg><use href="#i-home"/></svg> 개요</button>
+        <button class="nav-btn" aria-pressed="false" data-section="works"><svg><use href="#i-grid"/></svg> 작업물</button>
+        <button class="nav-btn" aria-pressed="false" data-section="case"><svg><use href="#i-rocket"/></svg> 케이스 스터디</button>
+        <button class="nav-btn" aria-pressed="false" data-section="components"><svg><use href="#i-code"/></svg> 컴포넌트/코드</button>
+        <button class="nav-btn" aria-pressed="false" data-section="labs"><svg><use href="#i-bolt"/></svg> 실험실</button>
+      </nav>
+
+      <div class="muted">
+        <div>⌘/Ctrl + K · 명령 팔레트</div>
+        <div class="row" style="margin-top:.35rem">
+          <a class="btn" href="intro.html" style="padding:.35rem .7rem;border-radius:10px">인트로로</a>
+          <span class="mono" style="opacity:.7">/intro.html</span>
+        </div>
+      </div>
+    </aside>
+
+    <!-- TOPBAR -->
+    <header class="topbar" role="banner">
+      <form class="search" role="search" aria-label="사이트 검색" onsubmit="event.preventDefault()">
+        <svg width="18" height="18" aria-hidden="true" focusable="false" style="opacity:.7"><circle cx="8" cy="8" r="6" stroke="currentColor" stroke-width="1.6" fill="none"/><path d="M12 12l4 4" stroke="currentColor" stroke-width="1.6" /></svg>
+        <input id="q" name="q" placeholder="검색: 프로젝트, 기술, 키워드…" autocomplete="off" />
+        <kbd style="margin-left:auto;border:1px solid var(--border);padding:.15rem .45rem;border-radius:8px;color:var(--muted);background:hsl(0 0% 100% / .5)">/</kbd>
+      </form>
+      <div class="actions">
+        <button class="btn" id="theme-toggle" title="테마 전환 (라이트/다크)" aria-pressed="false"><svg width="18" height="18"><use href="#i-moon"/></svg> 테마</button>
+        <button class="btn" id="hue" title="포인트 컬러 바꾸기"><svg width="18" height="18"><use href="#i-bolt"/></svg> 색상</button>
+        <a class="btn primary" href="#" aria-label="이력서 다운로드"><svg width="18" height="18"><use href="#i-external"/></svg> 이력서</a>
+        <div class="avatar" aria-hidden="true" title="프로필"></div>
+      </div>
+    </header>
+
+    <!-- SUBNAV -->
+    <div class="subnav">
+      <div class="tabs" role="tablist" aria-label="직무 선택">
+        <button class="tab" role="tab" aria-selected="true" data-tab="designer">웹디자이너</button>
+        <button class="tab" role="tab" aria-selected="false" data-tab="frontend">프론트엔드</button>
+        <button class="tab" role="tab" aria-selected="false" data-tab="backend">백엔드</button>
+      </div>
+      <div class="row">
+        <div class="segmented" role="group" aria-label="열 개수">
+          <button class="seg-btn" data-cols="2" aria-pressed="false">2단</button>
+          <button class="seg-btn" data-cols="3" aria-pressed="true">3단</button>
+          <button class="seg-btn" data-cols="4" aria-pressed="false">4단+</button>
+        </div>
+        <button class="btn" id="density" title="카드 밀도 전환">밀도</button>
+      </div>
+    </div>
+
+    <!-- MAIN -->
+    <main id="content" tabindex="-1">
+      <!-- STATS -->
+      <section aria-labelledby="s-metrics" data-reveal>
+        <h2 id="s-metrics" class="visually-hidden">핵심 지표</h2>
+        <div class="stat-row">
+          <article class="stat" aria-label="완료 프로젝트">
+            <div class="ico" aria-hidden="true"><svg width="22" height="22"><use href="#i-check"/></svg></div>
+            <div>
+              <div class="val mono">128</div>
+              <div class="lbl">완료 프로젝트</div>
+            </div>
+            <div class="spacer"></div>
+            <div class="kpi">
+              <div><span>올해</span><span class="mono">32</span></div>
+              <div><span>재방문율</span><span class="mono">68%</span></div>
+            </div>
+          </article>
+
+          <article class="stat" aria-label="평균 리드타임">
+            <div class="ico" aria-hidden="true"><svg width="22" height="22"><use href="#i-rocket"/></svg></div>
+            <div>
+              <div class="val mono">5.8일</div>
+              <div class="lbl">평균 리드타임 (디자인→배포)</div>
+            </div>
+            <div class="spacer"></div>
+            <div class="kpi">
+              <div><span>최단</span><span class="mono">1.2일</span></div>
+              <div><span>버전</span><span class="mono">~v2.7</span></div>
+            </div>
+          </article>
+
+          <article class="stat" aria-label="접근성 점수">
+            <div class="ico" aria-hidden="true"><svg width="22" height="22"><use href="#i-eye"/></svg></div>
+            <div>
+              <div class="val mono">A11y 99</div>
+              <div class="lbl">Lighthouse 접근성</div>
+            </div>
+            <div class="spacer"></div>
+            <div class="kpi">
+              <div><span>성능</span><span class="mono">98</span></div>
+              <div><span>베스트프랙티스</span><span class="mono">100</span></div>
+            </div>
+          </article>
+
+          <article class="stat" aria-label="테스트 커버리지">
+            <div class="ico" aria-hidden="true"><svg width="22" height="22"><use href="#i-code"/></svg></div>
+            <div>
+              <div class="val mono">92%</div>
+              <div class="lbl">테스트 커버리지</div>
+            </div>
+            <div class="spacer"></div>
+            <div class="kpi">
+              <div><span>유닛</span><span class="mono">96%</span></div>
+              <div><span>통합</span><span class="mono">88%</span></div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- DESIGNER TAB -->
+      <section class="tabpanel" role="tabpanel" data-tabpanel="designer">
+        <div class="grid" id="grid-designer" data-columns="3" data-density="cozy">
+          <article class="card" data-reveal>
+            <div class="hd">
+              <h3>쇼케이스 · 히어로 섹션</h3>
+              <div class="row"><span class="badge">Landing</span><span class="badge">Responsive</span></div>
+            </div>
+            <div class="bd">
+              <div class="media" role="img" aria-label="프로젝트 히어로 목업"></div>
+              <div class="row" style="margin-top:.9rem">
+                <div class="chips">
+                  <span class="chip">Glassmorphism</span>
+                  <span class="chip">Grid · 12col</span>
+                  <span class="chip">Motion Safe</span>
+                </div>
+                <span class="spacer"></span>
+                <div class="mono muted nowrap">v3 · 2025-08</div>
+              </div>
+            </div>
+            <div class="ft">역할: UI/UX 설계, 디자인 시스템, 프로토타이핑</div>
+          </article>
+
+          <article class="card" data-reveal>
+            <div class="hd">
+              <h3>스타일 가이드 · 토큰</h3>
+              <span class="badge">Design Tokens</span>
+            </div>
+            <div class="bd">
+              <div class="list">
+                <div class="item">
+                  <div style="width:44px;height:44px;border-radius:12px;background:var(--accent)"></div>
+                  <div><strong>Primary</strong><div class="muted">--hue 기반 포인트 컬러. 테마 토글에 반응.</div></div>
+                </div>
+                <div class="item">
+                  <div style="width:44px;height:44px;border-radius:12px;background:var(--accent-2)"></div>
+                  <div><strong>Secondary</strong><div class="muted">보조 그라데이션 컬러</div></div>
+                </div>
+                <div class="item">
+                  <div class="progress" style="flex:1"><div class="bar" style="--value:72%"></div></div>
+                </div>
+              </div>
+              <div class="chips" style="margin-top:.8rem">
+                <span class="chip">8pt Grid</span>
+                <span class="chip">Radius 16</span>
+                <span class="chip">Shadow Soft</span>
+              </div>
+            </div>
+            <div class="ft">Figma · Tokens · Auto layout · 배리에이션</div>
+          </article>
+
+          <article class="card" data-reveal>
+            <div class="hd">
+              <h3>타이포 & 레이아웃 시스템</h3>
+              <span class="badge">2단 · 3단 · 4단</span>
+            </div>
+            <div class="bd">
+              <div class="list">
+                <div class="item"><strong>Scale</strong><div class="muted">Clamp 기반: 14–18, 22–28, 30–40</div></div>
+                <div class="item"><strong>Leading</strong><div class="muted">1.6 · Heading는 1.25</div></div>
+                <div class="item"><strong>Container</strong><div class="muted">1260px · Sidebar + Content</div></div>
+              </div>
+              <div class="row" style="margin-top:.6rem">
+                <div class="badge">Card</div>
+                <div class="badge">Stat</div>
+                <div class="badge">Media</div>
+                <div class="badge">Timeline</div>
+              </div>
+            </div>
+            <div class="ft">접근성 대비/크기 · WCAG AA</div>
+          </article>
+
+          <article class="card" data-reveal>
+            <div class="hd">
+              <h3>프로세스 타임라인</h3>
+              <span class="badge">Double Diamond</span>
+            </div>
+            <div class="bd">
+              <div class="timeline">
+                <div class="t-item"><strong>Discover</strong><div class="muted">리서치 · 인터뷰 · 데이터 수집</div></div>
+                <div class="t-item"><strong>Define</strong><div class="muted">페르소나 · 문제정의 · 북극성 지표</div></div>
+                <div class="t-item"><strong>Develop</strong><div class="muted">와이어프레임 · 프로토타입 · 테스트</div></div>
+                <div class="t-item"><strong>Deliver</strong><div class="muted">핸드오프 · QA · 트래킹</div></div>
+              </div>
+            </div>
+            <div class="ft">NPS ↑ · 드롭오프 ↓ · 전환율 ↑</div>
+          </article>
+
+          <article class="card" data-reveal>
+            <div class="hd">
+              <h3>케이스 스터디 개요</h3>
+              <span class="badge">문제 → 접근 → 결과</span>
+            </div>
+            <div class="bd">
+              <ol class="list" style="list-style:decimal inside; gap:.3rem">
+                <li><strong>상황/문제</strong> — 비즈니스/사용자 페인포인트</li>
+                <li><strong>가설</strong> — 성공 지표와 가정</li>
+                <li><strong>해결</strong> — IA, 플로우, UI</li>
+                <li><strong>검증</strong> — 테스트/데이터</li>
+                <li><strong>결과</strong> — KPI와 다음 단계</li>
+              </ol>
+            </div>
+            <div class="ft">PDF/웹케이스 둘 다 지원</div>
+          </article>
+
+          <article class="card" data-reveal>
+            <div class="hd">
+              <h3>접근성 체크리스트</h3>
+              <span class="badge">A/AA</span>
+            </div>
+            <div class="bd">
+              <div class="list">
+                <div class="item"><span class="badge">키보드</span><div>포커스 링 · Skip 링크 · 트랩 방지</div></div>
+                <div class="item"><span class="badge">명도</span><div>텍스트 대비 ≥ 4.5:1</div></div>
+                <div class="item"><span class="badge">ARIA</span><div>역할/레이블/상태 일관</div></div>
+              </div>
+            </div>
+            <div class="ft">자동/수동 검사 병행</div>
+          </article>
+        </div>
+      </section>
+
+      <!-- FRONTEND TAB -->
+      <section class="tabpanel" role="tabpanel" data-tabpanel="frontend" hidden>
+        <div class="grid" id="grid-frontend" data-columns="3" data-density="cozy">
+          <article class="card" data-reveal>
+            <div class="hd">
+              <h3>컴포넌트 라이브러리</h3>
+              <div class="row"><span class="badge">Atomic</span><span class="badge">Type-safe</span></div>
+            </div>
+            <div class="bd">
+              <div class="chips">
+                <span class="chip">Button · Segmented</span>
+                <span class="chip">Tabs · Dialog</span>
+                <span class="chip">Form · Validation</span>
+              </div>
+              <div class="kpi">
+                <div><span>번들</span><span class="mono">28kb gz</span></div>
+                <div><span>트리쉐이킹</span><span class="mono">ON</span></div>
+              </div>
+            </div>
+            <div class="ft">React/Vue/Vanilla 변형 가능</div>
+          </article>
+
+          <article class="card" data-reveal>
+            <div class="hd">
+              <h3>성능 · 품질</h3>
+              <span class="badge">Lighthouse</span>
+            </div>
+            <div class="bd">
+              <div class="row">
+                <div class="progress" style="flex:1"><div class="bar" style="--value:98%"></div></div>
+                <div class="mono">98</div>
+              </div>
+              <div class="list" style="margin-top:.6rem">
+                <div class="item"><span class="badge">SSR/SSG</span><div>Hydration 비용 최소화</div></div>
+                <div class="item"><span class="badge">Code Split</span><div>라우트/컴포넌트 단위</div></div>
+                <div class="item"><span class="badge">CSR Safe</span><div>오류경계/로딩상태/스켈레톤</div></div>
+              </div>
+            </div>
+            <div class="ft">Web Vitals: LCP 1.2s · CLS 0.01</div>
+          </article>
+
+          <article class="card" data-reveal>
+            <div class="hd">
+              <h3>인터랙션 플레이그라운드</h3>
+              <span class="badge">Motion-safe</span>
+            </div>
+            <div class="bd">
+              <div class="media" aria-label="컴포넌트 인터랙션 데모"></div>
+              <div class="chips" style="margin-top:.8rem">
+                <span class="chip">ARIA Tab</span>
+                <span class="chip">Roving Focus</span>
+                <span class="chip">Typeahead</span>
+              </div>
+            </div>
+            <div class="ft">접근성 시뮬레이션 포함</div>
+          </article>
+
+          <article class="card" data-reveal>
+            <div class="hd">
+              <h3>데이터 계층 · API</h3>
+              <span class="badge">REST/GraphQL</span>
+            </div>
+            <div class="bd">
+              <div class="list">
+                <div class="item"><span class="badge">캐시</span><div>Stale-While-Revalidate · 옵티미스틱</div></div>
+                <div class="item"><span class="badge">오류</span><div>재시도 · 백오프 · 경계</div></div>
+                <div class="item"><span class="badge">보안</span><div>JWT · CSRF · CORS 규칙</div></div>
+              </div>
+            </div>
+            <div class="ft">SSE/WS 실시간 지원</div>
+          </article>
+
+          <article class="card" data-reveal>
+            <div class="hd">
+              <h3>테스팅 전략</h3>
+              <span class="badge">Unit · E2E</span>
+            </div>
+            <div class="bd">
+              <div class="list">
+                <div class="item"><span class="badge">유닛</span><div>퓨어 함수 · 훅</div></div>
+                <div class="item"><span class="badge">통합</span><div>Mock Service Worker</div></div>
+                <div class="item"><span class="badge">E2E</span><div>시나리오 기반 커버리지</div></div>
+              </div>
+              <div class="progress" style="margin-top:.6rem"><div class="bar" style="--value:92%"></div></div>
+            </div>
+            <div class="ft">스냅샷 안정성 관리</div>
+          </article>
+
+          <article class="card" data-reveal>
+            <div class="hd">
+              <h3>오픈소스 & 레포</h3>
+              <svg width="18" height="18"><use href="#i-github"/></svg>
+            </div>
+            <div class="bd">
+              <div class="list">
+                <div class="item"><strong>ui-kit</strong><div class="muted">디자인 시스템 · 컴포넌트</div></div>
+                <div class="item"><strong>charts</strong><div class="muted">접근성 있는 차트 유틸</div></div>
+                <div class="item"><strong>hooks</strong><div class="muted">데이터/포커스/애니메이션</div></div>
+              </div>
+            </div>
+            <div class="ft">MIT · 문서/스토리북 제공</div>
+          </article>
+        </div>
+      </section>
+
+      <!-- BACKEND TAB -->
+      <section class="tabpanel" role="tabpanel" data-tabpanel="backend" hidden>
+        <div class="grid" id="grid-backend" data-columns="3" data-density="cozy">
+          <article class="card" data-reveal>
+            <div class="hd">
+              <h3>서비스 맵 · 구조</h3>
+              <span class="badge">Microservices</span>
+            </div>
+            <div class="bd">
+              <div style="display:grid;grid-template-columns:repeat(6,1fr);gap:.5rem;align-items:stretch">
+                <div class="badge" style="grid-column:1/span 6;justify-content:center">Gateway/API</div>
+                <div class="badge" style="grid-column:1/span 2;justify-content:center">Auth</div>
+                <div class="badge" style="grid-column:3/span 2;justify-content:center">Catalog</div>
+                <div class="badge" style="grid-column:5/span 2;justify-content:center">Order</div>
+                <div class="badge" style="grid-column:1/span 3;justify-content:center">Cache/Redis</div>
+                <div class="badge" style="grid-column:4/span 3;justify-content:center">DB/Postgres</div>
+              </div>
+            </div>
+            <div class="ft">QoS · Circuit Breaker · Observability</div>
+          </article>
+
+          <article class="card" data-reveal>
+            <div class="hd">
+              <h3>신뢰성 & 스케일</h3>
+              <span class="badge">SLO</span>
+            </div>
+            <div class="bd">
+              <div class="kpi">
+                <div><span>가용성</span><span class="mono">99.95%</span></div>
+                <div><span>p95 응답</span><span class="mono">148ms</span></div>
+              </div>
+              <div class="list" style="margin-top:.6rem">
+                <div class="item"><span class="badge">배포</span><div>Blue/Green · Canary</div></div>
+                <div class="item"><span class="badge">로깅</span><div>분산 트레이싱 · 상관ID</div></div>
+                <div class="item"><span class="badge">보안</span><div>OWASP ASVS · 시크릿 관리</div></div>
+              </div>
+            </div>
+            <div class="ft">IaC · GitOps · 런북</div>
+          </article>
+
+          <article class="card" data-reveal>
+            <div class="hd">
+              <h3>데이터 모델 · 스키마</h3>
+              <span class="badge">ERD</span>
+            </div>
+            <div class="bd">
+              <div class="list">
+                <div class="item"><span class="badge">User</span><div>id · email · roles · meta</div></div>
+                <div class="item"><span class="badge">Product</span><div>id · sku · price · stock</div></div>
+                <div class="item"><span class="badge">Order</span><div>id · status · items · total</div></div>
+              </div>
+            </div>
+            <div class="ft">정규화/인덱싱 · 감사로그</div>
+          </article>
+
+          <article class="card" data-reveal>
+            <div class="hd">
+              <h3>API 계약</h3>
+              <span class="badge">OpenAPI</span>
+            </div>
+            <div class="bd">
+              <pre style="margin:0;background:transparent;border:0;font-size:.9rem"><code>{
+  "GET /api/products": "Query · 필터 · 페이지네이션",
+  "POST /api/orders": "검증 · 재고확인 · 결제훅",
+  "GET /api/health":  "상태 · 버전 · Uptime"
+}</code></pre>
+            </div>
+            <div class="ft">Idempotency-Key · Rate Limit</div>
+          </article>
+
+          <article class="card" data-reveal>
+            <div class="hd">
+              <h3>CI/CD 파이프라인</h3>
+              <span class="badge">Quality Gate</span>
+            </div>
+            <div class="bd">
+              <ol class="list" style="list-style:decimal inside">
+                <li>Lint/Typecheck</li>
+                <li>Test · Coverage</li>
+                <li>Build · Scan</li>
+                <li>Deploy · Verify</li>
+              </ol>
+              <div class="progress" style="margin-top:.6rem"><div class="bar" style="--value:100%"></div></div>
+            </div>
+            <div class="ft">Rollback · 알림/승인 규칙</div>
+          </article>
+
+          <article class="card" data-reveal>
+            <div class="hd">
+              <h3>관측성</h3>
+              <span class="badge">Metrics/Logs/Traces</span>
+            </div>
+            <div class="bd">
+              <div class="kpi">
+                <div><span>에러율</span><span class="mono">0.12%</span></div>
+                <div><span>Uptime</span><span class="mono">99.98%</span></div>
+              </div>
+              <div class="list" style="margin-top:.6rem">
+                <div class="item"><span class="badge">대시보드</span><div>SLI · 알림 임계값</div></div>
+                <div class="item"><span class="badge">트레이싱</span><div>스팬 태깅 · 샘플링</div></div>
+                <div class="item"><span class="badge">로그</span><div>구조화 · PII 마스킹</div></div>
+              </div>
+            </div>
+            <div class="ft">SRE 플레이북 링크</div>
+          </article>
+        </div>
+      </section>
+
+      <p class="footer-note">※ 포트폴리오 대시보드(시안). 인트로 페이지에서 여정 시작 &mdash; <a href="intro.html">intro.html</a></p>
+    </main>
+  </div>
+
+  <button class="fab" id="fab"><svg width="18" height="18"><use href="#i-rocket"/></svg> 새 항목</button>
+
+  <script>
+    // Utilities
+    const $ = (s, r=document)=>r.querySelector(s);
+    const $$ = (s, r=document)=>Array.from(r.querySelectorAll(s));
+    const store = (k, v) => localStorage.setItem(k, JSON.stringify(v));
+    const read = (k, d=null) => { try{ return JSON.parse(localStorage.getItem(k)) ?? d }catch{ return d } };
+
+    // Theme
+    const themeBtn = $('#theme-toggle');
+    function applyTheme(v){ document.documentElement.setAttribute('data-theme', v); themeBtn?.setAttribute('aria-pressed', v === 'dark'); }
+    applyTheme(read('theme', 'auto'));
+    themeBtn?.addEventListener('click', () => { const cur = document.documentElement.getAttribute('data-theme') || 'auto'; const next = cur === 'dark' ? 'auto' : 'dark'; applyTheme(next); store('theme', next); });
+
+    // Accent hue cycler
+    $('#hue')?.addEventListener('click', () => {
+      const hues = [225, 200, 260, 340, 22, 158];
+      const cur = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--hue').trim(), 10);
+      const idx = hues.indexOf(cur);
+      const next = hues[(idx + 1) % hues.length];
+      document.documentElement.style.setProperty('--hue', next);
+      store('hue', next);
+    });
+    const savedHue = read('hue'); if(typeof savedHue === 'number'){ document.documentElement.style.setProperty('--hue', savedHue) }
+
+    // Tabs
+    const tabs = $$('.tab'); const panels = $$('.tabpanel');
+    function setTab(name){
+      tabs.forEach(t => t.setAttribute('aria-selected', t.dataset.tab === name));
+      panels.forEach(p => { const m = p.dataset.tabpanel === name; p.hidden = !m; });
+      store('activeTab', name);
+      $('#content')?.scrollTo?.({top:0, behavior:'smooth'});
+    }
+    tabs.forEach(t => t.addEventListener('click', () => setTab(t.dataset.tab)));
+    setTab(read('activeTab', 'designer'));
+
+    // Column segmented
+    const segBtns = $$('.seg-btn');
+    function setCols(n){
+      segBtns.forEach(b => b.setAttribute('aria-pressed', b.dataset.cols === String(n)));
+      $$('.grid').forEach(g => g.setAttribute('data-columns', n));
+      store('cols', n);
+    }
+    segBtns.forEach(b => b.addEventListener('click', () => setCols(b.dataset.cols)));
+    setCols(read('cols', '3'));
+
+    // Density toggle
+    $('#density')?.addEventListener('click', () => {
+      const grids = $$('.grid');
+      const cur = grids[0].getAttribute('data-density') || 'cozy';
+      const next = cur === 'cozy' ? 'compact' : 'cozy';
+      grids.forEach(g => g.setAttribute('data-density', next));
+      document.querySelectorAll('.card').forEach(c => c.style.setProperty('--pad', next === 'compact' ? '.6rem' : '1.1rem'));
+      store('density', next);
+      $('#density').textContent = next === 'compact' ? '여유' : '밀도';
+    });
+    const savedDensity = read('density', 'cozy'); if(savedDensity === 'compact'){ $('#density').click() }
+
+    // Sidebar nav state
+    $$('#primary-nav .nav-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        $$('#primary-nav .nav-btn').forEach(b => b.setAttribute('aria-pressed', 'false'));
+        btn.setAttribute('aria-pressed', 'true');
+      });
+    });
+
+    // Fake create action
+    $('#fab')?.addEventListener('click', () => alert('새 항목 생성(시안): 프로젝트 카드/케이스 스터디 템플릿이 추가됩니다.'));
+
+    // Reveal on scroll
+    const reveal = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('is-in'); reveal.unobserve(e.target); } });
+    }, { rootMargin: '0px 0px -10% 0px', threshold: .15 });
+    $$('[data-reveal]').forEach(el => reveal.observe(el));
+
+    // Keyboard shortcuts
+    document.addEventListener('keydown', (e) => {
+      if (e.key === '/' && document.activeElement !== $('#q')){ e.preventDefault(); $('#q').focus(); }
+      if ((e.key === 'k' || e.key === 'K') && (e.ctrlKey || e.metaKey)){ e.preventDefault(); alert('커맨드 팔레트(시안): 프로젝트/명령 검색'); }
+    });
+  </script>
+</body>
+</html>

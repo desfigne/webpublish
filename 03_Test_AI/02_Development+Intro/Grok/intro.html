@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>John Doe - Portfolio Introduction</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+    <style>
+        /* Global Styles - Premium, Minimalist Design */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+
+        body {
+            background-color: #f8f9fc;
+            color: #2c3e50;
+            line-height: 1.7;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        /* Hero Section - Elegant Fade-In Animation */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 2rem;
+            background: linear-gradient(to bottom, #ffffff, #f0f4f8);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(0,122,255,0.05) 0%, transparent 70%);
+            opacity: 0;
+            animation: pulse 5s infinite ease-in-out;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0; }
+            50% { opacity: 1; }
+        }
+
+        .hero__title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            opacity: 0;
+            transform: translateY(50px);
+            animation: fadeUp 1s ease-out forwards;
+            letter-spacing: -0.05em;
+        }
+
+        .hero__subtitle {
+            font-size: 1.4rem;
+            font-weight: 400;
+            max-width: 600px;
+            margin-bottom: 2rem;
+            color: #677685;
+            opacity: 0;
+            transform: translateY(50px);
+            animation: fadeUp 1.2s ease-out forwards;
+        }
+
+        .hero__cta {
+            padding: 0.8rem 2.5rem;
+            background-color: #007aff;
+            color: #ffffff;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 30px;
+            transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+            opacity: 0;
+            transform: translateY(50px);
+            animation: fadeUp 1.4s ease-out forwards;
+        }
+
+        .hero__cta:hover {
+            background-color: #0066cc;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 122, 255, 0.2);
+        }
+
+        @keyframes fadeUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Selling Points Section - Parallax Scrolling Effect */
+        .selling-points {
+            padding: 6rem 2rem;
+            background-color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .selling-points__title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 4rem;
+            text-align: center;
+            opacity: 0;
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .selling-points__grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            max-width: 1200px;
+            width: 100%;
+        }
+
+        .point {
+            padding: 2rem;
+            background-color: #fcfdfe;
+            border-radius: 16px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.05);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .point:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
+        }
+
+        .point__icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #007aff;
+            transition: color 0.3s ease;
+        }
+
+        .point:hover .point__icon {
+            color: #0066cc;
+        }
+
+        .point__title {
+            font-size: 1.6rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .point__desc {
+            font-size: 1rem;
+            color: #677685;
+        }
+
+        /* Scroll Reveal */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Footer - Simple Elegant Link */
+        .footer {
+            padding: 3rem 2rem;
+            text-align: center;
+            background-color: #f0f4f8;
+            font-size: 0.9rem;
+            color: #a0a8b0;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero__title {
+                font-size: 2.5rem;
+            }
+
+            .hero__subtitle {
+                font-size: 1.2rem;
+            }
+
+            .selling-points__title {
+                font-size: 2rem;
+            }
+
+            .point {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1 class="hero__title">John Doe</h1>
+        <p class="hero__subtitle">Seasoned Web Designer, Frontend & Backend Developer crafting premium digital experiences that drive business success.</p>
+        <a href="dashboard.html" class="hero__cta">Explore My Dashboard</a>
+    </section>
+
+    <!-- Selling Points Section -->
+    <section class="selling-points">
+        <h2 class="selling-points__title reveal">Why Choose Me?</h2>
+        <div class="selling-points__grid">
+            <div class="point reveal">
+                <span class="point__icon">🎨</span>
+                <h3 class="point__title">Innovative UI/UX Design</h3>
+                <p class="point__desc">Creating intuitive, user-centric interfaces that enhance engagement and conversion rates, backed by 8+ years of design expertise.</p>
+            </div>
+            <div class="point reveal">
+                <span class="point__icon">💻</span>
+                <h3 class="point__title">Robust Frontend Development</h3>
+                <p class="point__desc">Building responsive, high-performance web apps with React and Vue, ensuring seamless cross-device experiences.</p>
+            </div>
+            <div class="point reveal">
+                <span class="point__icon">🛠️</span>
+                <h3 class="point__title">Scalable Backend Solutions</h3>
+                <p class="point__desc">Developing secure, efficient server-side architectures using Node.js, Express, and databases for enterprise-level applications.</p>
+            </div>
+            <div class="point reveal">
+                <span class="point__icon">🚀</span>
+                <h3 class="point__title">Proven Track Record</h3>
+                <p class="point__desc">Delivered projects that increased user retention by 40% and reduced load times by 50% for global clients.</p>
+            </div>
+            <div class="point reveal">
+                <span class="point__icon">🤝</span>
+                <h3 class="point__title">Collaborative Approach</h3>
+                <p class="point__desc">Agile methodology expert, excelling in team environments to turn visions into reality with precision and creativity.</p>
+            </div>
+            <div class="point reveal">
+                <span class="point__icon">📈</span>
+                <h3 class="point__title">Continuous Innovation</h3>
+                <p class="point__desc">Staying ahead with emerging tech like AI integration and PWAs, ensuring future-proof solutions.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        © 2025 John Doe. All rights reserved.
+    </footer>
+
+    <script>
+        // Scroll Reveal Logic
+        const reveals = document.querySelectorAll('.reveal');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        reveals.forEach(reveal => observer.observe(reveal));
+    </script>
+</body>
+</html>

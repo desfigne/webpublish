@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portfolio Intro + Dashboard</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+<style>
+    * {margin:0; padding:0; box-sizing:border-box;}
+    body {
+        font-family: 'Inter', sans-serif;
+        background:#000;
+        color:#fff;
+        overflow-x:hidden;
+    }
+    section {
+        min-height:100vh;
+        display:flex;
+        flex-direction:column;
+        justify-content:center;
+        align-items:center;
+        padding:4rem;
+        text-align:center;
+        position:relative;
+    }
+    h1 {
+        font-size:4rem;
+        font-weight:800;
+        margin-bottom:1rem;
+        line-height:1.1;
+    }
+    p {
+        font-size:1.25rem;
+        max-width:800px;
+        color:#ccc;
+        line-height:1.6;
+    }
+    .highlight {color:#f5f5f5; font-weight:600;}
+    .section-dark {background:#000;}
+    .section-gray {background:#111;}
+    .section-light {background:#f8f8f8; color:#000;}
+    .img-container {
+        margin-top:2rem;
+        width:100%;
+        max-width:800px;
+    }
+    .img-container img {
+        width:100%;
+        height:auto;
+        border-radius:1rem;
+        box-shadow:0 20px 40px rgba(0,0,0,0.4);
+    }
+    /* Dashboard style */
+    .dashboard {
+        display:grid;
+        grid-template-columns:repeat(auto-fit, minmax(300px, 1fr));
+        gap:2rem;
+        width:100%;
+        max-width:1200px;
+        margin-top:3rem;
+    }
+    .card {
+        background:#fff;
+        color:#000;
+        border-radius:1rem;
+        padding:2rem;
+        text-align:left;
+        box-shadow:0 10px 30px rgba(0,0,0,0.2);
+        transition:transform 0.4s ease, box-shadow 0.4s ease;
+    }
+    .card:hover {
+        transform:translateY(-10px);
+        box-shadow:0 20px 50px rgba(0,0,0,0.3);
+    }
+    .card h3 {
+        margin-bottom:0.75rem;
+        font-size:1.5rem;
+    }
+    .card p {
+        font-size:1rem;
+        color:#444;
+    }
+</style>
+</head>
+<body>
+
+<!-- Intro Section 1 -->
+<section class="section-dark" id="sec1">
+    <h1 class="fade-up">안녕하세요,<br>웹 크리에이터 <span class="highlight">홍길동</span>입니다.</h1>
+    <p class="fade-up">웹디자인, 프론트엔드, 백엔드까지 아우르는 올인원 역량으로,<br>유저 중심의 경험을 디자인합니다.</p>
+</section>
+
+<!-- Intro Section 2 -->
+<section class="section-gray" id="sec2">
+    <h1 class="fade-up">디자인과 코드,<br>그 경계를 허물다</h1>
+    <p class="fade-up">최신 UI/UX 트렌드와 기술 스택을 결합하여<br>브랜드 가치와 사용자 경험을 극대화합니다.</p>
+    <div class="img-container fade-up">
+        <img src="https://picsum.photos/1200/600?random=1" alt="Sample Work">
+    </div>
+</section>
+
+<!-- Intro Section 3 -->
+<section class="section-dark" id="sec3">
+    <h1 class="fade-up">성능과 완성도의<br>균형을 추구합니다</h1>
+    <p class="fade-up">빠른 로딩 속도, 접근성, 반응형 디자인까지<br>모든 환경에서 완벽하게 동작하는 웹을 만듭니다.</p>
+    <div class="img-container fade-up">
+        <img src="https://picsum.photos/1200/600?random=2" alt="Performance">
+    </div>
+</section>
+
+<!-- Portfolio (Dashboard) -->
+<section class="section-light" id="portfolio">
+    <h1 class="fade-up">포트폴리오</h1>
+    <p class="fade-up">웹디자인 · 프론트엔드 · 백엔드 프로젝트 모음</p>
+    <div class="dashboard">
+        <div class="card fade-up">
+            <h3>웹디자인 프로젝트</h3>
+            <p>미니멀리즘부터 인터랙티브 웹까지, 다양한 디자인 경험.</p>
+        </div>
+        <div class="card fade-up">
+            <h3>프론트엔드 개발</h3>
+            <p>React, Vue, GSAP을 활용한 동적 웹 인터페이스 구현.</p>
+        </div>
+        <div class="card fade-up">
+            <h3>백엔드 개발</h3>
+            <p>Node.js, Express, 데이터베이스 설계와 API 구축 경험.</p>
+        </div>
+    </div>
+</section>
+
+<!-- Scripts -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+<script>
+    gsap.registerPlugin(ScrollTrigger);
+
+    gsap.utils.toArray('.fade-up').forEach(el => {
+        gsap.from(el, {
+            y: 50,
+            opacity: 0,
+            duration: 1,
+            ease: 'power3.out',
+            scrollTrigger: {
+                trigger: el,
+                start: 'top 80%',
+                toggleActions: 'play none none reverse'
+            }
+        });
+    });
+</script>
+
+</body>
+</html>

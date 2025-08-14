@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>John Doe - Portfolio</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap">
+    <style>
+        /* Global Styles - Inspired by Apple: Minimalist, Premium, San Francisco-like */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+
+        body {
+            background-color: #ffffff;
+            color: #000000;
+            line-height: 1.4;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* Typography - Large Headings, Clean Body */
+        h1 {
+            font-size: 6rem;
+            font-weight: 900;
+            letter-spacing: -0.05em;
+            line-height: 1;
+        }
+
+        h2 {
+            font-size: 4rem;
+            font-weight: 800;
+            letter-spacing: -0.04em;
+            line-height: 1.1;
+        }
+
+        h3 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            letter-spacing: -0.03em;
+        }
+
+        p {
+            font-size: 1.25rem;
+            font-weight: 400;
+            color: #333333;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Sections - Full-Width, Generous Padding, Whitespace */
+        section {
+            padding: 10rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: #f5f5f7;
+            padding: 0 2rem;
+        }
+
+        .hero h1 {
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .cta {
+            padding: 1rem 3rem;
+            background-color: #0071e3;
+            color: #ffffff;
+            font-size: 1.2rem;
+            font-weight: 600;
+            border-radius: 30px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            cursor: pointer;
+        }
+
+        .cta:hover {
+            background-color: #005bb5;
+            transform: scale(1.05);
+        }
+
+        /* Feature Sections - Alternating Layouts, High-Quality Imagery Placeholders */
+        .feature {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .feature-image {
+            width: 100%;
+            max-width: 800px;
+            height: 500px;
+            background-color: #e0e0e0;
+            border-radius: 20px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            transition: transform 0.5s ease;
+        }
+
+        .feature-image::before {
+            content: 'Image Placeholder';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #666;
+            font-size: 1.5rem;
+        }
+
+        .feature:hover .feature-image {
+            transform: translateY(-10px);
+        }
+
+        /* Animations - Subtle Fade-In on Scroll, Parallax-like */
+        .reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 1s ease-out, transform 1s ease-out;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Parallax Effect for Backgrounds */
+        .parallax {
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        /* Portfolio Dashboard Section - Integrated at Bottom */
+        #portfolio {
+            background-color: #f5f5f7;
+            padding: 10rem 2rem;
+        }
+
+        .dashboard-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 4rem;
+        }
+
+        @media (min-width: 1024px) {
+            .dashboard-container {
+                grid-template-columns: 1fr 3fr;
+            }
+        }
+
+        .sidebar {
+            background-color: #ffffff;
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+        }
+
+        .sidebar ul {
+            list-style: none;
+        }
+
+        .sidebar li {
+            margin-bottom: 1rem;
+        }
+
+        .sidebar a {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #0071e3;
+            transition: color 0.3s ease;
+        }
+
+        .sidebar a:hover {
+            color: #005bb5;
+        }
+
+        .main-content {
+            display: flex;
+            flex-direction: column;
+            gap: 4rem;
+        }
+
+        .section-card {
+            background-color: #ffffff;
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+        }
+
+        .section-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+
+        @media (min-width: 768px) {
+            .grid-2 {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+
+        @media (min-width: 768px) {
+            .grid-3 {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        .card {
+            background-color: #f5f5f7;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: left;
+        }
+
+        .card h4 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .card p {
+            font-size: 1rem;
+            color: #666;
+        }
+
+        /* Footer */
+        footer {
+            padding: 4rem 2rem;
+            text-align: center;
+            font-size: 0.875rem;
+            color: #666;
+            background-color: #f5f5f7;
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 4rem;
+            }
+
+            h2 {
+                font-size: 3rem;
+            }
+
+            section {
+                padding: 6rem 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero parallax" style="background-image: url('https://via.placeholder.com/1920x1080?text=Hero+Background');">
+        <h1 class="reveal">John Doe</h1>
+        <p class="reveal">Web Designer, Frontend & Backend Developer. Crafting elegant digital experiences with precision and innovation.</p>
+        <a href="#portfolio" class="cta reveal">Explore Portfolio</a>
+    </section>
+
+    <!-- Introduction Section 1: About Me -->
+    <section>
+        <div class="feature">
+            <h2 class="reveal">Innovative Design Meets Robust Development</h2>
+            <p class="reveal">With over 8 years of experience, I blend creative UI/UX design with full-stack development to deliver high-performance web solutions that drive results.</p>
+            <div class="feature-image reveal"></div>
+        </div>
+    </section>
+
+    <!-- Introduction Section 2: Key Strengths -->
+    <section style="background-color: #f5f5f7;">
+        <h2 class="reveal">My Core Strengths</h2>
+        <div class="feature reveal" style="max-width: 1200px; margin: 4rem auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 3rem;">
+            <div class="section-card">
+                <h3>UI/UX Excellence</h3>
+                <p>Creating intuitive interfaces that captivate users and enhance engagement.</p>
+            </div>
+            <div class="section-card">
+                <h3>Frontend Mastery</h3>
+                <p>Building responsive, dynamic apps with React, Vue, and modern CSS.</p>
+            </div>
+            <div class="section-card">
+                <h3>Backend Expertise</h3>
+                <p>Developing scalable servers with Node.js, Express, and databases like MongoDB.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Introduction Section 3: Achievements -->
+    <section>
+        <div class="feature">
+            <h2 class="reveal">Proven Achievements</h2>
+            <p class="reveal">Delivered 50+ projects, boosting client retention by 40% and optimizing performance for seamless experiences.</p>
+            <div class="feature-image reveal"></div>
+        </div>
+    </section>
+
+    <!-- Portfolio Dashboard Section - At the Bottom -->
+    <section id="portfolio">
+        <h2 class="reveal">Portfolio Dashboard</h2>
+        <div class="dashboard-container">
+            <!-- Sidebar -->
+            <aside class="sidebar reveal">
+                <ul>
+                    <li><a href="#">Overview</a></li>
+                    <li><a href="#">Web Design</a></li>
+                    <li><a href="#">Frontend Development</a></li>
+                    <li><a href="#">Backend Development</a></li>
+                    <li><a href="#">Projects</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </aside>
+
+            <!-- Main Content -->
+            <main class="main-content">
+                <!-- Overview Section -->
+                <div class="section-card reveal">
+                    <h3>Career Overview</h3>
+                    <div class="grid-2">
+                        <div class="card">
+                            <h4>Projects Completed</h4>
+                            <p>Over 50 high-impact projects delivered</p>
+                            <div style="height: 200px; background: linear-gradient(135deg, #007aff, #4da1ff); border-radius: 10px; display: flex; align-items: center; justify-content: center; color: white;">Project Analytics</div>
+                        </div>
+                        <div class="card">
+                            <h4>Core Competencies</h4>
+                            <p>UI/UX Excellence: 98% | Full-Stack Proficiency: 95%</p>
+                            <div style="height: 200px; background: linear-gradient(135deg, #007aff, #4da1ff); border-radius: 10px; display: flex; align-items: center; justify-content: center; color: white;">Skills Visualization</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Featured Projects -->
+                <div class="section-card reveal">
+                    <h3>Featured Projects</h3>
+                    <div class="grid-3">
+                        <div class="card">
+                            <h4>Premium E-Commerce Platform</h4>
+                            <p>React frontend with seamless UX, integrated Node.js backend</p>
+                        </div>
+                        <div class="card">
+                            <h4>Enterprise API System</h4>
+                            <p>Scalable Node.js & Express with MongoDB optimization</p>
+                        </div>
+                        <div class="card">
+                            <h4>High-End UI/UX Prototype</h4>
+                            <p>Figma designs translated to interactive prototypes</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Expertise Breakdown -->
+                <div class="section-card reveal">
+                    <h3>Expertise Breakdown</h3>
+                    <div class="grid-3">
+                        <div class="card">
+                            <h4>HTML5 & CSS3</h4>
+                            <p>Pixel-perfect responsive layouts</p>
+                        </div>
+                        <div class="card">
+                            <h4>JavaScript & Frameworks</h4>
+                            <p>React, Vue.js for dynamic interfaces</p>
+                        </div>
+                        <div class="card">
+                            <h4>Backend Technologies</h4>
+                            <p>Node.js, Express, Databases (SQL/NoSQL)</p>
+                        </div>
+                        <div class="card">
+                            <h4>Design Tools</h4>
+                            <p>Figma, Adobe XD for premium visuals</p>
+                        </div>
+                        <div class="card">
+                            <h4>DevOps & Tools</h4>
+                            <p>Git, CI/CD pipelines</p>
+                        </div>
+                        <div class="card">
+                            <h4>Performance Optimization</h4>
+                            <p>SEO, Speed enhancements</p>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        © 2025 John Doe. All rights reserved.
+    </footer>
+
+    <script>
+        // Scroll Reveal Animations
+        const reveals = document.querySelectorAll('.reveal');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, { threshold: 0.2 });
+
+        reveals.forEach(reveal => observer.observe(reveal));
+    </script>
+</body>
+</html>

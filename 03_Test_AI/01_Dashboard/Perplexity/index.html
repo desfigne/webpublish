@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>김개발자 - 포트폴리오 대시보드</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- 헤더 -->
+    <header class="header">
+        <div class="header__content">
+            <div class="header__brand">
+                <h1 class="header__logo">포트폴리오</h1>
+            </div>
+            <nav class="header__nav">
+                <a href="#dashboard" class="nav-link active">대시보드</a>
+                <a href="#projects" class="nav-link">프로젝트</a>
+                <a href="#skills" class="nav-link">스킬</a>
+                <a href="#contact" class="nav-link">연락처</a>
+            </nav>
+            <div class="header__actions">
+                <button class="theme-toggle" id="themeToggle">
+                    <span class="theme-toggle__icon">🌙</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <div class="app-layout">
+        <!-- 사이드바 -->
+        <aside class="sidebar">
+            <div class="sidebar__profile">
+                <div class="profile-avatar">
+                    <div class="avatar-placeholder">김</div>
+                </div>
+                <h3 class="profile-name">김개발자</h3>
+                <p class="profile-title">풀스택 개발자</p>
+            </div>
+            
+            <nav class="sidebar__nav">
+                <a href="#dashboard" class="sidebar-link active">
+                    <span class="sidebar-link__icon">📊</span>
+                    <span class="sidebar-link__text">대시보드</span>
+                </a>
+                <a href="#projects" class="sidebar-link">
+                    <span class="sidebar-link__icon">💼</span>
+                    <span class="sidebar-link__text">프로젝트</span>
+                </a>
+                <a href="#skills" class="sidebar-link">
+                    <span class="sidebar-link__icon">💻</span>
+                    <span class="sidebar-link__text">스킬</span>
+                </a>
+                <a href="#contact" class="sidebar-link">
+                    <span class="sidebar-link__icon">📧</span>
+                    <span class="sidebar-link__text">연락처</span>
+                </a>
+                <a href="#settings" class="sidebar-link">
+                    <span class="sidebar-link__icon">⚙️</span>
+                    <span class="sidebar-link__text">설정</span>
+                </a>
+            </nav>
+        </aside>
+
+        <!-- 메인 콘텐츠 -->
+        <main class="main-content">
+            <div class="dashboard-grid">
+                <!-- 좌측 컬럼 -->
+                <div class="dashboard-column dashboard-column--left">
+                    <!-- 프로필 카드 -->
+                    <div class="card profile-card">
+                        <div class="card__body">
+                            <div class="profile-details">
+                                <div class="profile-avatar profile-avatar--large">
+                                    <div class="avatar-placeholder">김</div>
+                                </div>
+                                <h2 class="profile-name profile-name--large">김개발자</h2>
+                                <p class="profile-title profile-title--large">풀스택 개발자</p>
+                                <p class="profile-bio">웹디자인에서 풀스택 개발로 전환 중인 기술 애호가입니다.</p>
+                                <div class="profile-meta">
+                                    <span class="meta-item">📍 서울, 대한민국</span>
+                                    <span class="meta-item">🚀 경력 3+ 년</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 통계 카드들 -->
+                    <div class="stats-grid">
+                        <div class="card stat-card">
+                            <div class="card__body">
+                                <div class="stat-icon">📊</div>
+                                <div class="stat-value">25+</div>
+                                <div class="stat-label">완료 프로젝트</div>
+                            </div>
+                        </div>
+                        <div class="card stat-card">
+                            <div class="card__body">
+                                <div class="stat-icon">🚀</div>
+                                <div class="stat-value">3+</div>
+                                <div class="stat-label">경험 년수</div>
+                            </div>
+                        </div>
+                        <div class="card stat-card">
+                            <div class="card__body">
+                                <div class="stat-icon">💻</div>
+                                <div class="stat-value">12</div>
+                                <div class="stat-label">기술 스택</div>
+                            </div>
+                        </div>
+                        <div class="card stat-card">
+                            <div class="card__body">
+                                <div class="stat-icon">⭐</div>
+                                <div class="stat-value">98%</div>
+                                <div class="stat-label">만족도</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 중앙 컬럼 -->
+                <div class="dashboard-column dashboard-column--center">
+                    <div class="section-header">
+                        <h2 class="section-title">최근 프로젝트</h2>
+                        <button class="btn btn--sm btn--outline">전체 보기</button>
+                    </div>
+                    
+                    <div class="projects-list">
+                        <div class="card project-card">
+                            <div class="card__body">
+                                <div class="project-header">
+                                    <h3 class="project-title">이커머스 웹사이트</h3>
+                                    <span class="status status--success">완료</span>
+                                </div>
+                                <p class="project-description">모던 React와 Node.js로 구축한 반응형 쇼핑몰</p>
+                                <div class="tech-stack">
+                                    <span class="tech-tag">React</span>
+                                    <span class="tech-tag">Node.js</span>
+                                    <span class="tech-tag">MongoDB</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card project-card">
+                            <div class="card__body">
+                                <div class="project-header">
+                                    <h3 class="project-title">대시보드 UI</h3>
+                                    <span class="status status--warning">진행중</span>
+                                </div>
+                                <p class="project-description">데이터 시각화가 포함된 관리자 대시보드</p>
+                                <div class="tech-stack">
+                                    <span class="tech-tag">Vue.js</span>
+                                    <span class="tech-tag">Chart.js</span>
+                                    <span class="tech-tag">CSS Grid</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card project-card">
+                            <div class="card__body">
+                                <div class="project-header">
+                                    <h3 class="project-title">모바일 앱 API</h3>
+                                    <span class="status status--success">완료</span>
+                                </div>
+                                <p class="project-description">RESTful API와 JWT 인증 시스템</p>
+                                <div class="tech-stack">
+                                    <span class="tech-tag">Express.js</span>
+                                    <span class="tech-tag">PostgreSQL</span>
+                                    <span class="tech-tag">JWT</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 활동 타임라인 -->
+                    <div class="section-header">
+                        <h2 class="section-title">최근 활동</h2>
+                    </div>
+                    
+                    <div class="card timeline-card">
+                        <div class="card__body">
+                            <div class="timeline">
+                                <div class="timeline-item">
+                                    <div class="timeline-marker"></div>
+                                    <div class="timeline-content">
+                                        <h4>이커머스 프로젝트 완료</h4>
+                                        <p>React와 Node.js를 활용한 풀스택 개발</p>
+                                        <span class="timeline-date">2일 전</span>
+                                    </div>
+                                </div>
+                                <div class="timeline-item">
+                                    <div class="timeline-marker"></div>
+                                    <div class="timeline-content">
+                                        <h4>새로운 기술 스택 학습</h4>
+                                        <p>TypeScript와 Next.js 심화 과정 수료</p>
+                                        <span class="timeline-date">1주 전</span>
+                                    </div>
+                                </div>
+                                <div class="timeline-item">
+                                    <div class="timeline-marker"></div>
+                                    <div class="timeline-content">
+                                        <h4>포트폴리오 사이트 리뉴얼</h4>
+                                        <p>최신 UI/UX 트렌드 적용</p>
+                                        <span class="timeline-date">2주 전</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 우측 컬럼 -->
+                <div class="dashboard-column dashboard-column--right">
+                    <!-- 스킬 차트 -->
+                    <div class="card skills-card">
+                        <div class="card__header">
+                            <h3>기술 스킬</h3>
+                        </div>
+                        <div class="card__body">
+                            <div class="skill-list">
+                                <div class="skill-item">
+                                    <div class="skill-info">
+                                        <span class="skill-name">JavaScript</span>
+                                        <span class="skill-percentage">95%</span>
+                                    </div>
+                                    <div class="skill-bar">
+                                        <div class="skill-progress" data-skill="95"></div>
+                                    </div>
+                                </div>
+                                <div class="skill-item">
+                                    <div class="skill-info">
+                                        <span class="skill-name">React</span>
+                                        <span class="skill-percentage">90%</span>
+                                    </div>
+                                    <div class="skill-bar">
+                                        <div class="skill-progress" data-skill="90"></div>
+                                    </div>
+                                </div>
+                                <div class="skill-item">
+                                    <div class="skill-info">
+                                        <span class="skill-name">CSS/SCSS</span>
+                                        <span class="skill-percentage">92%</span>
+                                    </div>
+                                    <div class="skill-bar">
+                                        <div class="skill-progress" data-skill="92"></div>
+                                    </div>
+                                </div>
+                                <div class="skill-item">
+                                    <div class="skill-info">
+                                        <span class="skill-name">Node.js</span>
+                                        <span class="skill-percentage">85%</span>
+                                    </div>
+                                    <div class="skill-bar">
+                                        <div class="skill-progress" data-skill="85"></div>
+                                    </div>
+                                </div>
+                                <div class="skill-item">
+                                    <div class="skill-info">
+                                        <span class="skill-name">Database</span>
+                                        <span class="skill-percentage">88%</span>
+                                    </div>
+                                    <div class="skill-bar">
+                                        <div class="skill-progress" data-skill="88"></div>
+                                    </div>
+                                </div>
+                                <div class="skill-item">
+                                    <div class="skill-info">
+                                        <span class="skill-name">Python</span>
+                                        <span class="skill-percentage">80%</span>
+                                    </div>
+                                    <div class="skill-bar">
+                                        <div class="skill-progress" data-skill="80"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 연락처 카드 -->
+                    <div class="card contact-card">
+                        <div class="card__header">
+                            <h3>연락처</h3>
+                        </div>
+                        <div class="card__body">
+                            <div class="contact-list">
+                                <a href="mailto:developer@example.com" class="contact-item">
+                                    <span class="contact-icon">📧</span>
+                                    <span class="contact-text">developer@example.com</span>
+                                </a>
+                                <a href="tel:+82-10-1234-5678" class="contact-item">
+                                    <span class="contact-icon">📱</span>
+                                    <span class="contact-text">+82 10-1234-5678</span>
+                                </a>
+                                <a href="https://github.com/developer" target="_blank" class="contact-item">
+                                    <span class="contact-icon">💻</span>
+                                    <span class="contact-text">GitHub</span>
+                                </a>
+                                <a href="https://linkedin.com/in/developer" target="_blank" class="contact-item">
+                                    <span class="contact-icon">💼</span>
+                                    <span class="contact-text">LinkedIn</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 가용성 카드 -->
+                    <div class="card availability-card">
+                        <div class="card__header">
+                            <h3>프로젝트 가능 여부</h3>
+                        </div>
+                        <div class="card__body">
+                            <div class="availability-status">
+                                <div class="availability-indicator available"></div>
+                                <div class="availability-text">
+                                    <h4>현재 프로젝트 수주 가능</h4>
+                                    <p>새로운 프로젝트에 참여할 준비가 되어있습니다.</p>
+                                </div>
+                            </div>
+                            <button class="btn btn--primary btn--full-width">프로젝트 문의하기</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
