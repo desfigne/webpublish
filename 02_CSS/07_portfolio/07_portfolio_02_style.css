@@ -31,7 +31,8 @@ Selector
     --color-orange: #fd6413;
     --color-gray: #1b1e26;
     
-    --max-size-width: 1200px;
+    --max-size-width-d: 1200px;
+    --max-size-width-m: 100%;
 }
 
 /*
@@ -42,6 +43,7 @@ Selector
     font-family: 'Open Sans', 'sans-serif';
     box-sizing: border-box;
     margin: 0; padding: 0;
+    transition: all 250ms ease;
 }
 
 ul { list-style: none; }
@@ -49,13 +51,13 @@ button { border: 0; outline: 0; }
 
 a { text-decoration: none; }
 
-.section {
+.section, footer {
     padding: 4rem;
     text-align: center;
 }
 
-.section.container {
-    width: var(--max-size-width);
+.section.container, .footer.container {
+    width: var(--max-size-width-d);
     margin: auto;
 }
 
@@ -126,6 +128,24 @@ a { text-decoration: none; }
 
 /*-------------------------------------------------------------------------------------
     
+    Header - Media Query - Toggler
+      
+/*------------------------------------------------------------------------------------*/
+
+.header-toggle {
+    display: none;
+    color: var(--color-white);
+    background-color: var(--color-black);
+    font-size: 1.5rem;
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+}
+
+
+
+/*-------------------------------------------------------------------------------------
+    
     Main - Section (Home)
       
 /*------------------------------------------------------------------------------------*/
@@ -177,7 +197,7 @@ a { text-decoration: none; }
 
 /*-------------------------------------------------------------------------------------
     
-    Main - Section (about)
+    Main - Section (About)
       
 /*------------------------------------------------------------------------------------*/
 
@@ -228,7 +248,7 @@ a { text-decoration: none; }
 
 /*-------------------------------------------------------------------------------------
     
-    Main - Section (skill)
+    Main - Section (Skill)
       
 /*------------------------------------------------------------------------------------*/
 
@@ -280,4 +300,261 @@ a { text-decoration: none; }
 .bar-value {
     background-color: var(--color-accent);
     height: 3px;
+}
+
+
+
+/*-------------------------------------------------------------------------------------
+    
+    Main - Section (Work)
+      
+/*------------------------------------------------------------------------------------*/
+
+#work {
+    background-color: var(--color-black);
+    color: var(--color-white);
+}
+
+.categories {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin: 2.5rem 0;
+}
+
+.category {
+    position: relative;
+    color: var(--color-white);
+    padding: 0.5rem 3rem;
+    border: 1px solid var(--color-accent);
+    border-radius: 4px;
+    font-size: 1.1rem;
+    background-color: var(--color-black);
+}
+
+.category.selected {
+    background-color: var(--color-accent);
+    color: var(--color-black)
+}
+
+.category-count {
+    position: absolute;
+    top: 20px; right: 10px;
+    background-color: var(--color-orange);
+    color: var(--color-white);
+    width: 28px;
+    height: 28px;
+    line-height: 28px;
+    border-radius: 28px;
+    opacity: 0;
+    transition: all 250ms ease;
+}
+
+.category:hover .category-count {
+    opacity: 1;
+    top: 4px; right: 10px;
+}
+
+.projects {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 1rem;
+}
+
+.project {
+    position: relative;
+    overflow: hidden;
+}
+
+.project-img {
+    width: 100%;
+    border-radius: 8px;
+}
+
+.project-metadata {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--color-black);
+    opacity: 0;
+    transition: all 250ms ease;
+}
+
+.project:hover .project-metadata {
+    opacity: 0.8;
+}
+
+
+
+/*-------------------------------------------------------------------------------------
+    
+    Main - Section (Testimonial)
+      
+/*------------------------------------------------------------------------------------*/
+
+.testimonials {
+    margin: 3rem;
+}
+
+.testimonial {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.testimonial:nth-child(even) .testimonial-img { /* even의 반대 순서는 odd */
+    order: 1;
+}
+
+.testimonial-img {
+    width: 150px;
+    height: 150px;
+    border-radius: 100%; /* 50%로도 가능 */
+    box-shadow: 4px 8px 8px rgba(0, 0, 0, 0.38);
+}
+
+.testimonial-text {
+    border-radius: 8px;
+    box-shadow: 4px 8px 8px rgba(0, 0, 0, 0.38);
+    padding: 1rem;
+}
+
+.testimonial-text-name {
+    color: var(--color-accent);
+    font-weight: 700;
+    margin-top: 0.5rem; /* 인라인 레벨이라 width, height, margin 적용 안됨, 인라인 블럭 레벨로 교체 필요 */
+    display: inline-block;
+}
+
+
+
+/*-------------------------------------------------------------------------------------
+    
+    Main - Button (Top)
+      
+/*------------------------------------------------------------------------------------*/
+
+.arrow-top {
+    position: fixed;
+    bottom: 3rem;
+    right: 3rem;
+    color: var(--color-white);
+    font-size: 3rem;
+    width: 4.5rem;
+    height: 4.5rem;
+    border-radius: 100%;
+    background-color: var(--color-black);
+    text-align: center;
+    box-shadow: 5px 5px 0px 0px var(--color-accent);
+}
+
+
+
+/*-------------------------------------------------------------------------------------
+    
+    Footer
+      
+/*------------------------------------------------------------------------------------*/
+
+footer { text-align: center; }
+
+#contact {
+    background-color: var(--color-black);
+    color: var(--color-white);
+}
+
+.contact-links {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    font-size: 2rem;
+    padding: 1rem;
+}
+
+.contact-link {
+    color: var(--color-white);
+}
+
+.contact-link:hover {
+    color: var(--color-accent);
+}
+
+
+
+/*-------------------------------------------------------------------------------------
+  -------------------------------------------------------------------------------------
+    
+    Responsive - Media Screen
+
+  -------------------------------------------------------------------------------------
+/*------------------------------------------------------------------------------------*/
+
+
+/*-------------------------------------------------------------------------------------
+    
+    가로 사이즈 601픽셀부터 1000픽셀까지의 스타일 변경
+      
+/*------------------------------------------------------------------------------------*/
+
+@media screen and (max-width: 1000px) {
+    .header { flex-direction: column; align-items: start; }
+
+    .header-menu { display: none; }
+
+    .header-toggle { display: block; }
+
+    section { padding: 3rem 2rem; }
+
+    .title { font-size: 2rem; }
+
+    .description { font-size: 1rem; }
+
+    #home { padding: 5rem 3rem; }
+
+    .home-title { font-size: 2.5rem; margin-bottom: 0.5rem; }
+
+    .about-majors { flex-direction: column; align-items: center; }
+
+    .about-major { width: 80% !important; }
+
+    .section.container, .footer.container { width: var(--max-size-width-m); }
+
+    .about-job { justify-content: center; }
+
+    .skills { grid-template-columns: 1fr; }
+
+    .categories { flex-direction: column; }
+
+    .categorie { width: 80%; }
+
+    .category { width: 100%; }
+
+    .projects { grid-template-columns: repeat(2, 1fr); }
+
+    .testimonial { flex-direction: column; }
+
+    .testimonial:nth-child(even) .testimonial-img { order: 0; }
+
+    .arrow-top { bottom: 1.5rem; right: 1.5rem; font-size: 2rem; width: 2rem; height: 2rem; }
+}
+
+
+/*-------------------------------------------------------------------------------------
+    
+    가로 사이즈 1픽셀부터 600픽셀까지의 스타일 변경
+      
+/*------------------------------------------------------------------------------------*/
+
+@media screen and (max-width: 600px) {
+    .projects {
+        grid-template-columns: repeat(1, 1fr);
+    }
 }
