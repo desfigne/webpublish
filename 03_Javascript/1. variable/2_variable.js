@@ -32,5 +32,4 @@ const cname = "홍길동";
 
 // const는 변수값을 재정의할 수 없기에 에러가 발생
 // cname = "이순신";
-
 console.log("cname --> ", cname);

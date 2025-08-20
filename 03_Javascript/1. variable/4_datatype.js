@@ -82,7 +82,5 @@ console.log('');
 console.log(x == y); // true
 console.log(x == obj); // false
 
-// @@@ 이부분 내용 놓침 강사님 코드 확인하기 @@@
-
 console.log('');
 console.log('========================================');

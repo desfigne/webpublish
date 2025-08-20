@@ -4,3 +4,5 @@ https://dribbble.com/shots/26393325-AI-Powered-Talent-Finder-based-on-Brief-Tale
 https://dribbble.com/shots/25993411-Modern-Web-Agency-Landing-Page
 https://dribbble.com/shots/26006545-Progressive-blue-is-used-to-hide-premium-content-in-Medium
 https://dribbble.com/shots/26058779-Orum-AI-Landing-Page
+
+하단 푸터 커튼 열리듯이 뒤 레이어의 고정된 컨텐츠가 표시되도록, 인비테이션 초대장처럼
