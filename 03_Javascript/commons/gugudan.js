@@ -15,6 +15,5 @@ export function multiGugudan(start, end) {
             rows += `${j}*${i}=${i*j}\t`;
         }
         console.log(rows);
-        
     }
 }
